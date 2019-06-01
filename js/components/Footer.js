@@ -1,8 +1,16 @@
 import React from 'react';
+import Contact from './Contact';
 
 const Footer = () => {
     return (
-        <h3>Footer</h3>
+        <footer>
+        <Contact />
+        <p>Copyright &copy; Ivan Kohut</p>
+        <section className='footer-social'>
+            <i>Facebook</i>
+            <i>Instagram</i>
+        </section>
+        </footer>
     )
 }
 
