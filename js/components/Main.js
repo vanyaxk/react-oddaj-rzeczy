@@ -1,5 +1,76 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faHandHoldingHeart, faDownload, faGlasses, faTruck} from '@fortawesome/free-solid-svg-icons';
+
+const MainSection = styled.section`
+    height: 100vh;
+`;
+
+const Container = styled.div`
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+`;
+
+const MainStats = styled.section`
+    background-color: #f9D132;
+`;
+
+const MainStat = styled.article`
+    flex-grow: 1;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: center;
+    color: #606060;
+`;
+
+const Stat = styled.h4`
+    font-weight: 300;
+    font-size: 3em;
+    padding: 15px;
+`;
+
+const StatHeader = styled.h5`
+    font-size: 1.5em;
+    margin: 20px 0;
+`;
+
+const StatDesc = styled.p`
+    font-size: 1em;
+    padding: 15px;
+`;
+
+
+const MainGuides = styled.section`
+    max-width: 800px;
+    margin: 0 auto;
+`;
+
+const GuidesContainer = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+`;
+
+const GuidesHeader = styled.h4`
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+
+    &:after {
+        content: url('./../../images/decoration.png');
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+    }
+`;
+
+const MainGuide = styled.article`
+    text-align: center;
+`;
+
+
 
 const Main = () => {
     let stats = {
@@ -9,52 +80,60 @@ const Main = () => {
     }
 
     return (
-        <section className='main'>
-            <section className='main-stats'>
-                <article className='main-stat'>
-                    <h4><span>{stats.bags}</span>Oddanych worków</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+        <MainSection>
+            
+            <MainStats>
+            <Container>
+                <MainStat>
+                    <Stat>{stats.bags}</Stat>
+                    <StatHeader>Oddanych worków</StatHeader>
+                    <StatDesc>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                         In, eaque! 
-                        Numquam repellat tempora voluptas optio!</p>
-                </article>
-                <article className='main-stat'>
-                    <h4><span>{stats.orgs}</span>Wspartych organizacji</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, eaque! 
-                    Numquam repellat tempora voluptas optio!</p>
-                </article>
-                <article className='main-stat'>
-                    <h4><span>{stats.cols}</span>Zorganizowanych zbiórek</h4>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, eaque! 
-                        Numquam repellat tempora voluptas optio!</p>
-                </article>
-            </section>
+                        Numquam repellat tempora voluptas optio!</StatDesc>
+                </MainStat>
+                <MainStat>
+                    <Stat>{stats.orgs}</Stat>
+                    <StatHeader>Wspartych organizacji</StatHeader>
+                <StatDesc>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, eaque! 
+                    Numquam repellat tempora voluptas optio!</StatDesc>
+                </MainStat>
+                <MainStat>
+                    <Stat>{stats.cols}</Stat>
+                    <StatHeader>Zorganizowanych zbiórek</StatHeader>
+                    <StatDesc>Lorem ipsum dolor sit amet consectetur adipisicing elit. In, eaque! 
+                        Numquam repellat tempora voluptas optio!</StatDesc>
+                </MainStat>
+                </Container>
+            </MainStats>
 
-            <section className='main-guides'>
-                <h3>Wystarczą 4 proste kroki</h3>
-                <article className='main-guide'>
-                    <i></i>
+            <MainGuides>
+                <GuidesHeader>Wystarczą 4 proste kroki</GuidesHeader>
+                <GuidesContainer>
+                <MainGuide>
+                    <FontAwesomeIcon icon={faHandHoldingHeart}/>
                     <p>Wybierz rzeczy</p>
                     <p className='smaller'>Ubrania, zabawki, sprzęt</p>
-                </article>
-                <article className='main-guide'>
-                    <i></i>
+                </MainGuide>
+                <MainGuide>
+                    <FontAwesomeIcon icon={faDownload}/>
                     <p>Spakuj je</p>
                     <p className='smaller'>Skorzystaj z worków</p>
-                </article>
-                <article className='main-guide'>
-                    <i></i>
+                </MainGuide>
+                <MainGuide>
+                    <FontAwesomeIcon icon={faGlasses}/>
                     <p>Zdecyduj komu chcesz pomóc</p>
                     <p className='smaller'>Wybierz zaufane miejsce</p>
-                </article>
-                <article className='main-guide'>
-                    <i></i>
+                </MainGuide>
+                <MainGuide>
+                    <FontAwesomeIcon icon={faTruck}/>
                     <p>Zamów kuriera</p>
                     <p className='smaller'>Kurier przyjedzie w dogodnym terminie</p>
-                </article>
-            </section>
+                </MainGuide>
+                </GuidesContainer>
+            </MainGuides>
 
             <Link to='/register'>Załóz konto</Link>
-        </section>
+        </MainSection>
     )
 }
 

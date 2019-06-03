@@ -1,7 +1,8 @@
 import React from 'react';
+import styled from 'styled-components';
 
 const About = () => (
-    <section className='about'>
+    <section className='about container'>
         <div className='about-text'>
             <h4>O nas</h4>
             <p>Morbi id lacus elit. 

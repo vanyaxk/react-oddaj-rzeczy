@@ -6,7 +6,6 @@ import Login from './components/Login';
 
 const RouteLogin = () => (
     <Switch>
-        <Route exact path='/' component={Main} />
         <Route path='/login' component={Login} />
         <Route path='/register' component={Register} />
     </Switch>

@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM  from 'react-dom';
-// import '../styles/style.css'
-import { HashRouter, Route} from 'react-router-dom';
-import LoginPanel from './components/LoginPanel';
-import RouteLogin from './RouteLogin';
-import Navigation from './components/Navigation';
+import {HashRouter, Route} from 'react-router-dom';
 import Main from './components/Main';
 import About from './components/About';
+//styled-components
+import reset from 'styled-reset';
+import {createGlobalStyle} from 'styled-components';
 
 import Foundations from './components/Foundations';
 
@@ -14,13 +13,22 @@ import Foundations from './components/Foundations';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
 
+const GlobalReset = createGlobalStyle`
+    ${reset}
+    
+    body {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16px;
+        font-weight: 300;
+    }
+`;
+
 const App = () => {
     return (
             <HashRouter>
                 <>
-                <LoginPanel />
-                <Navigation />
-                <RouteLogin />
+                <GlobalReset />
+                <Header />
                 <Main />
                 <About />
                 
