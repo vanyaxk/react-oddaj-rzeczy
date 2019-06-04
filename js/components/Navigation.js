@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-import styled, {css} from 'styled-components';
+import { Link, animateScroll as scroll } from "react-scroll";
+import styled from 'styled-components';
+
+
 
 const Nav = styled.nav`
     width: 100%;    
@@ -13,14 +15,17 @@ const Container = styled.div`
     justify-content: flex-end;
 `;
 
-const NavigLink = styled(Link)`
+  const NavigLink = styled(Link)`
     margin-left: 30px;
     padding: 10px 20px;
     font-size: 1.1em;
     color: #1a2a3a;
     text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border .2s;
     &:hover {
-        border: '1px solid #696969'
+        border: 1px solid #696969;
     }
 `;
 
@@ -31,14 +36,6 @@ const CallToAction = styled.div`
     height: calc(100vh - 65px);
     background: url('./../../images/header_start_img.jpg') no-repeat bottom center / cover;
     position: relative;
-`;
-
-const CTAImageContainer = styled.div`
-    width: 60%;
-`;
-
-const CTAImage = styled.img`
-    max-width: 100%;
 `;
 
 
@@ -82,22 +79,33 @@ const CTAButton = styled.button`
     width: 175px;
     text-transform: uppercase;
 `;
-//react scroll
+
 
 class Navigation extends Component {
+    constructor(props) {
+        super(props);
+        this.selector = React.createRef();
+    }
     navItems = [
         {name: 'Start', link: '/', },
-        {name: 'O co chodzi?', link: '.main',},
-        {name: 'O nas', link: '.about'},
-        {name: 'Fundacje i organizacje', link: '.foundations'},
-        {name: 'Kontakt', link: '.contact'}
+        {name: 'O co chodzi?', link: 'scrollToMain',},
+        {name: 'O nas', link: 'scrollToAbout'},
+        {name: 'Fundacje i organizacje', link: 'scrollToFoundations'},
+        {name: 'Kontakt', link: 'scrollToContact'}
     ];
 
     render() {
         const jsxNav = this.navItems.map(element => {
             return <NavigLink 
                     key={element.name}
-                    to={element.link}>
+                    activeClass="active"
+                    to={element.link}
+                    spy={true}
+                    smooth={true}
+                    offset={-70}
+                    duration= {500}
+                    onMouseOver={this.funHover}
+                    >
                         {element.name}
                     </NavigLink>
         });

@@ -15,6 +15,10 @@ import { Footer } from './components/footer';
 
 const GlobalReset = createGlobalStyle`
     ${reset}
+
+    * {
+        box-sizing: border-box;
+    }
     
     body {
         font-family: 'Open Sans', sans-serif;

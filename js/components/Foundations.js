@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 
-const ReversedButton = props => <button {...props} children={props.children.split('').reverse()} />
+        const FoundationHeader = styled.h4`
+            font-size: 1.5em;
+            margin-top: 20px;
+            text-align: center;
+
+            &:after {
+                content: url('./../../images/decoration.png');
+                display: block;
+                width: 100%;
+                transform: scale(.5);
+            }
+        `;
         const Container = styled.section`
             max-width: 1024px;
             margin: 0 auto;
@@ -35,21 +46,18 @@ const ReversedButton = props => <button {...props} children={props.children.spli
 
 class Foundations extends Component {
     state = {
-        text: 'Foundations',
-        as: 'ReversedButton'
+        text: 'Foundations'
     }
 
     handleClickFunds = () => {
         this.setState({
             text: 'Foundations',
-            as: 'ReversedButton'
         })
     }
 
     handleClickOrgs = () => {
         this.setState({
             text: 'Orgs',
-            as: 'ReversedButton'
         });
     }
 
@@ -61,14 +69,13 @@ class Foundations extends Component {
 
     render() {
         return (
-            <section className='foundations'>
+            <section className='foundations' id='scrollToFoundations'>
                  <Container>
-                    <h4>Komu pomagamy?</h4>
+                    <FoundationHeader>Komu pomagamy?</FoundationHeader>
                     <Buttons>
                         <Button onClick={this.handleClickFunds}>Fundacjom</Button>
                         <Button onClick={this.handleClickOrgs}>Organizacjom</Button>
                         <Button active onClick={this.handleClickLocals}>Lokalnym zbiórkom</Button>
-                        <Button as={ReversedButton}>Hello</Button>
                     </Buttons>
                     <p>{this.state.text}</p>
                     

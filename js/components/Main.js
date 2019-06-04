@@ -46,15 +46,19 @@ const StatDesc = styled.p`
 const MainGuides = styled.section`
     max-width: 800px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 `;
 
 const GuidesContainer = styled.div`
     display: flex;
     justify-content: space-evenly;
+    background-color: #EBEBEB;
 `;
 
 const GuidesHeader = styled.h4`
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 1.5em;
     text-align: center;
 
@@ -68,6 +72,36 @@ const GuidesHeader = styled.h4`
 
 const MainGuide = styled.article`
     text-align: center;
+    padding: 30px 20px;
+`;
+
+const NormalPar = styled.p`
+    font-size: 1em;
+    margin-top: 20px;
+
+    &:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 50%;
+        margin: 20px auto;
+        background-color: #696969;
+    }
+`;
+
+const SmallPar = styled.p`
+    font-size: .8em;
+`;
+
+const MainLink = styled(Link)`
+    display: inline-block;
+    text-align: center;
+    margin: 20px auto 0;
+    padding: 15px 30px;
+    border: 1px solid #696969;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
 `;
 
 
@@ -80,7 +114,7 @@ const Main = () => {
     }
 
     return (
-        <MainSection>
+        <MainSection id='scrollToMain'>
             
             <MainStats>
             <Container>
@@ -110,29 +144,28 @@ const Main = () => {
                 <GuidesHeader>Wystarczą 4 proste kroki</GuidesHeader>
                 <GuidesContainer>
                 <MainGuide>
-                    <FontAwesomeIcon icon={faHandHoldingHeart}/>
-                    <p>Wybierz rzeczy</p>
-                    <p className='smaller'>Ubrania, zabawki, sprzęt</p>
+                    <FontAwesomeIcon icon={faHandHoldingHeart} size='2x'/>
+                    <NormalPar>Wybierz rzeczy</NormalPar>
+                    <SmallPar>Ubrania, zabawki, sprzęt</SmallPar>
                 </MainGuide>
                 <MainGuide>
-                    <FontAwesomeIcon icon={faDownload}/>
-                    <p>Spakuj je</p>
-                    <p className='smaller'>Skorzystaj z worków</p>
+                    <FontAwesomeIcon icon={faDownload} size='2x'/>
+                    <NormalPar>Spakuj je</NormalPar>
+                    <SmallPar>Skorzystaj z worków</SmallPar>
                 </MainGuide>
                 <MainGuide>
-                    <FontAwesomeIcon icon={faGlasses}/>
-                    <p>Zdecyduj komu chcesz pomóc</p>
-                    <p className='smaller'>Wybierz zaufane miejsce</p>
+                    <FontAwesomeIcon icon={faGlasses} size='2x'/>
+                    <NormalPar>Komu chcesz pomóc?</NormalPar>
+                    <SmallPar>Wybierz zaufane miejsce</SmallPar>
                 </MainGuide>
                 <MainGuide>
-                    <FontAwesomeIcon icon={faTruck}/>
-                    <p>Zamów kuriera</p>
-                    <p className='smaller'>Kurier przyjedzie w dogodnym terminie</p>
+                    <FontAwesomeIcon icon={faTruck} size='2x'/>
+                    <NormalPar>Zamów kuriera</NormalPar>
+                    <SmallPar>Ustalicie z nim dogodny termin</SmallPar>
                 </MainGuide>
                 </GuidesContainer>
+                <MainLink to='/register'>Załóz konto</MainLink>
             </MainGuides>
-
-            <Link to='/register'>Załóz konto</Link>
         </MainSection>
     )
 }
