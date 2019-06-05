@@ -19,6 +19,215 @@ import styled, { css } from 'styled-components';
             display: flex;
             flex-direction: column;
         `;
+
+        const Buttons = styled.div`
+        margin: 0 auto;
+        max-width: 600px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center
+        `;
+        const FoundationList = styled.ul`
+            list-style: none;
+        `;
+        const FoundationPurpose = styled.p`
+            max-width: 600px;
+            padding: 20px;
+            margin: 0 auto;
+            text-align: center;
+        `;
+
+        const FoundationItem = styled.li`
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        `;
+        const FoundationInfo = styled.section`
+            padding: 10px 20px;
+            &:after {
+                content: '';
+                display: block;
+                height: 1px;
+                min-width: 400px;
+                background-color: #a9a9a9;
+                margin-top: 30px;
+            }
+        `;
+        const FoundationName = styled.p`
+            font-size: 1.1em;
+        `;
+        const FoundationMission = styled.p`
+            margin-top: 20px;
+            font-style: italic;
+            font-size: .9em;
+        `;
+        const FoundationNeeds = styled.p`
+            padding: 10px 20px;
+
+            &:after {
+                content: '';
+                display: block;
+                height: 1px;
+                min-width: 400px;
+                background-color: #a9a9a9;
+                margin-top: 30px;
+            }
+        `;
+
+        const PageList = styled.ul`
+            list-style: none;
+            display: flex;
+            justify-content: center;
+        `;
+        const PageNumber = styled.li`
+            padding: 15px 10px;
+        `;
+
+        const foundations = [
+            {
+                id: 1,
+                name: "Fundacja 'Dbam o zdrowie'",
+                mission: "Pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, jedzenie, sprzet, AGD"
+            },
+            {
+                id: 2,
+                name: "Fundacja 'Dla dzieci'",
+                mission: "Pomoc dzieciom",
+                needs: "ubrania, jedzenie, sprzet, AGD"
+            },
+            {
+                id: 3,
+                name: "Fundacja 'Bez domu'",
+                mission: "Pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, jedzenie, sprzet, AGD"
+            },
+            {
+                id: 4,
+                name: "Fundacja 'Zdrowie'",
+                mission: "Pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, jedzenie, sprzet, AGD"
+            }
+        ];
+    
+        const organisations = [
+            {
+                id: 1,
+                name: "Polska Akcja Humanitarna",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            },
+    
+            {
+                id: 2,
+                name: "Fundacja im. Stefana Batorego",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            },
+    
+            {
+                id: 3,
+                name: "Fundacja MSP Komandor",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            },
+    
+            {
+                id: 4,
+                name: "Fundacja 'Arka'",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            }
+        ];
+
+        const localOrgs = [
+            {
+                id: 1,
+                name: "Fundacja 'Arka'",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            },
+    
+            {
+                id: 2,
+                name: "Polska Pomoc",
+                mission: "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubrania, sprzet, AGD, pieniądze"
+            },
+    
+            {
+                id: 3,
+                name: "Fundacja 'Bez domu'",
+                mission: "Pomoc ludziom w trudnej sytuacji zyciowej",
+                needs: "ubranie, jedzenie, sprzet, AGD"
+            },
+    
+            {
+                id: 4,
+                name: "Fundacja 'Super'",
+                mission: "Pomoc wszystkim!",
+                needs: "Wszystko!"
+            },
+
+            {
+                id: 5,
+                name: 'Polskie Centrum Pomocy',
+                mission: "Pomóc Polakom",
+                needs: "Cokolwiek"
+            },
+
+            {
+                id: 6,
+                name: 'Korpusy Pokoju',
+                mission: 'Pomóc zdrowotna',
+                needs: "Leki"
+            },
+            {
+                id: 7,
+                name: 'Caritas Polska',
+                mission: 'Care and protection',
+                needs: "ubrania, sprzęt, AGD"
+            }
+        ]
+
+
+class Foundations extends Component {
+    
+    state = {
+        text: foundations,
+        elementsPerPage: 3,
+        currentPage: 1,
+    }
+
+    handleClickFunds = () => {
+        this.setState({
+            text: foundations,
+            clicked: true
+        })
+    }
+
+    handleClickOrgs = () => {
+        this.setState(prevState => ({
+            text: organisations,
+            clicked: !prevState.clicked
+        }));
+    }
+
+    handleClickLocals = () => {
+        this.setState({
+            text: localOrgs
+        });
+    }
+
+    handlePageClick = () => {
+        this.setState({
+            currentPage: Number(event.target.id)
+        })
+    }
+
+    render() {
+
         const Button = styled.button`
             background: white;
             outline: none;
@@ -28,56 +237,59 @@ import styled, { css } from 'styled-components';
             padding: 10px;
             margin: 0 10px;
             font-size: 1em;
-            
-            ${props => props.active && css`
-            border: 1px solid black;
+            border: ${props => props.clicked ? '1px solid black' : 'none'};
             border-radius: 3px;
-            `}
         `;
 
-        const Buttons = styled.div`
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center
-        `;
-
-
-class Foundations extends Component {
-    state = {
-        text: 'Foundations'
-    }
-
-    handleClickFunds = () => {
-        this.setState({
-            text: 'Foundations',
-        })
-    }
-
-    handleClickOrgs = () => {
-        this.setState({
-            text: 'Orgs',
+        const lastElement = this.state.currentPage * this.state.elementsPerPage;
+        const firstElement = lastElement - this.state.elementsPerPage;
+        const currentElements = this.state.text.slice(firstElement, lastElement);
+        //displaying elements
+        const renderElements = currentElements.map(el => {
+            return (
+                <FoundationItem key={el.name}>
+                    <FoundationInfo>
+                        <FoundationName>{el.name}</FoundationName>
+                        <FoundationMission>{el.mission}</FoundationMission>
+                    </FoundationInfo>
+                    <FoundationNeeds>{el.needs}</FoundationNeeds>
+                </FoundationItem>
+            )
         });
-    }
+        //displaying page numbers
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(this.state.text.length / this.state.elementsPerPage); i++) {
+            pageNumbers.push(i);
+        }
 
-    handleClickLocals = () => {
-        this.setState({
-            text: 'Local Orgs'
+        const renderPageNumbers = pageNumbers.map(number => {
+        return (
+            <PageNumber
+            key={number}
+            id={number}
+            onClick={this.handlePageClick}
+            >
+            {number}
+            </PageNumber>
+        );
         });
-    }
-
-    render() {
         return (
             <section className='foundations' id='scrollToFoundations'>
                  <Container>
                     <FoundationHeader>Komu pomagamy?</FoundationHeader>
                     <Buttons>
-                        <Button onClick={this.handleClickFunds}>Fundacjom</Button>
-                        <Button onClick={this.handleClickOrgs}>Organizacjom</Button>
-                        <Button active onClick={this.handleClickLocals}>Lokalnym zbiórkom</Button>
+                        <Button clicked={this.state.clicked} onClick={this.handleClickFunds}>Fundacjom</Button>
+                        <Button clicked={this.state.clicked} onClick={this.handleClickOrgs}>Organizacjom</Button>
+                        <Button clicked={this.state.clicked} onClick={this.handleClickLocals}>Lokalnym zbiórkom</Button>
                     </Buttons>
-                    <p>{this.state.text}</p>
+                    <FoundationPurpose>
+                        W naszej bazie znijdziesz listę zweryfikowanych Fundacji, z którymi wspólpracujemy.
+                        Mozesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.
+                    </FoundationPurpose>
+                    <FoundationList>
+                        {renderElements}
+                    </FoundationList>
+                    <PageList>{renderPageNumbers}</PageList>
                     
                 </Container>
             </section>

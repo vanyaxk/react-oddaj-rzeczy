@@ -102,7 +102,7 @@ class Navigation extends Component {
                     to={element.link}
                     spy={true}
                     smooth={true}
-                    offset={-70}
+                    offset={0}
                     duration= {500}
                     onMouseOver={this.funHover}
                     >

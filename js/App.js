@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM  from 'react-dom';
 import {HashRouter, Route} from 'react-router-dom';
 import Main from './components/Main';
@@ -27,8 +27,14 @@ const GlobalReset = createGlobalStyle`
     }
 `;
 
-const App = () => {
-    return (
+class App extends Component {
+    // state = {
+
+    // }
+    // handleClick
+
+    render() {
+        return (
             <HashRouter>
                 <>
                 <GlobalReset />
@@ -40,7 +46,9 @@ const App = () => {
                 <Footer />
                 </>
             </HashRouter>
-    )};
+    );
+    }
+}
 
 ReactDOM.render(
     <App />,
