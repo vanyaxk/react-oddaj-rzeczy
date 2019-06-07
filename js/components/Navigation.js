@@ -57,6 +57,7 @@ const CTAHeader = styled.h3`
     margin-bottom: 15px;
     &:last-of-type {
         &:after {
+            margin-top: 20px;
             content: url('../../images/decoration.png');
             display: block;
             width: 100%;

@@ -54,14 +54,17 @@ import styled, { css } from 'styled-components';
                 margin-top: 30px;
             }
         `;
+
         const FoundationName = styled.p`
             font-size: 1.1em;
         `;
+
         const FoundationMission = styled.p`
             margin-top: 20px;
             font-style: italic;
             font-size: .9em;
         `;
+
         const FoundationNeeds = styled.p`
             padding: 10px 20px;
 
@@ -80,8 +83,11 @@ import styled, { css } from 'styled-components';
             display: flex;
             justify-content: center;
         `;
+
         const PageNumber = styled.li`
-            padding: 15px 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            cursor: pointer
         `;
 
         const foundations = [
@@ -198,25 +204,35 @@ class Foundations extends Component {
         text: foundations,
         elementsPerPage: 3,
         currentPage: 1,
+        fundsClicked: true,
+        orgsClicked: false,
+        localsClicked: false
     }
 
     handleClickFunds = () => {
         this.setState({
             text: foundations,
-            clicked: true
+            fundsClicked: true,
+            orgsClicked: false,
+            localsClicked: false
         })
     }
 
     handleClickOrgs = () => {
-        this.setState(prevState => ({
+        this.setState({
             text: organisations,
-            clicked: !prevState.clicked
-        }));
+            orgsClicked: true,
+            fundsClicked: false,
+            localsClicked: false
+        });
     }
 
     handleClickLocals = () => {
         this.setState({
-            text: localOrgs
+            text: localOrgs,
+            localsClicked: true,
+            fundsClicked: false,
+            orgsClicked: false
         });
     }
 
@@ -267,6 +283,7 @@ class Foundations extends Component {
             <PageNumber
             key={number}
             id={number}
+            style={this.state.style}
             onClick={this.handlePageClick}
             >
             {number}
@@ -278,9 +295,9 @@ class Foundations extends Component {
                  <Container>
                     <FoundationHeader>Komu pomagamy?</FoundationHeader>
                     <Buttons>
-                        <Button clicked={this.state.clicked} onClick={this.handleClickFunds}>Fundacjom</Button>
-                        <Button clicked={this.state.clicked} onClick={this.handleClickOrgs}>Organizacjom</Button>
-                        <Button clicked={this.state.clicked} onClick={this.handleClickLocals}>Lokalnym zbiórkom</Button>
+                        <Button clicked={this.state.fundsClicked} onClick={this.handleClickFunds}>Fundacjom</Button>
+                        <Button clicked={this.state.orgsClicked} onClick={this.handleClickOrgs}>Organizacjom</Button>
+                        <Button clicked={this.state.localsClicked} onClick={this.handleClickLocals}>Lokalnym zbiórkom</Button>
                     </Buttons>
                     <FoundationPurpose>
                         W naszej bazie znijdziesz listę zweryfikowanych Fundacji, z którymi wspólpracujemy.

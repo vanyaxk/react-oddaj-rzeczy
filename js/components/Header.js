@@ -12,7 +12,6 @@ const Header = () => {
     return (
         <PageHeader>
             <LoginPanel />
-            <Navigation />
             <RouteLogin />
         </PageHeader>
     );

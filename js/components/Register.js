@@ -1,9 +1,20 @@
 import React, {Component} from 'react';
+import styled from 'styled-components';
+
+const RegisterForm = styled.form``;
+
+const InputName = styled.input``;
+
 
 class Register extends Component {
     render() {
         return (
-            <h3>Register here</h3>
+            <RegisterForm>
+                <label>
+                    Name:
+                    <InputName />
+                </label>
+            </RegisterForm>
         );
     }
 }
