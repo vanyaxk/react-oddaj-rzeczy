@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import ReactDOM  from 'react-dom';
 import {HashRouter, Route} from 'react-router-dom';
-import Main from './components/Main';
+import Main from './components/Main/Main';
 import About from './components/About';
 //styled-components
 import reset from 'styled-reset';
 import {createGlobalStyle} from 'styled-components';
 
-import Foundations from './components/Foundations';
+import Foundations from './components/Foundations/Foundations';
 
 
-import { Header } from './components/header';
-import { Footer } from './components/footer';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
 const GlobalReset = createGlobalStyle`
     ${reset}

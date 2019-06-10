@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
-
 import styled from 'styled-components';
 
-const FormContainer = styled.section`
+export const FormContainer = styled.section`
     width: 500px;
     min-height: 400px;
     border-radius: 5px;
@@ -18,7 +16,7 @@ const FormContainer = styled.section`
 `;
 
 
-const ContactHeader = styled.h4`
+export const ContactHeader = styled.h4`
     font-size: 2rem;
     text-align: center;
 
@@ -31,19 +29,19 @@ const ContactHeader = styled.h4`
     }
 `;
 
-const ContactData = styled.section`
+export const ContactData = styled.section`
     display: flex;
     justify-content: space-between;
 `;
 
-const ContactForm = styled.form`
+export const ContactForm = styled.form`
     display: flex;
     flex-flow: column wrap;
     padding: 10px;
     justify-content: center;
 `;
 
-const ContactInput = styled.input`
+export const ContactInput = styled.input`
     width: 48%;
     border: none;
     background: transparent;
@@ -63,7 +61,7 @@ const ContactInput = styled.input`
     }
 `;
 
-const ContactMessage = styled.textarea`
+export const ContactMessage = styled.textarea`
     resize: none;
     width: 100%;
     border: none;
@@ -83,7 +81,7 @@ const ContactMessage = styled.textarea`
     }
 `;
 
-const SubmitMessage = styled.input`
+export const SubmitMessage = styled.input`
     width: 100px;
     border: none;
     outline: none;
@@ -100,54 +98,3 @@ const SubmitMessage = styled.input`
         border: 1px solid transparent;
     }
 `;
-
-class Contact extends Component {
-    state = {
-        name: '',
-        email: '',
-        didContact: false
-    }
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.setState({
-            didContact: true
-        });
-    }
-
-    handleNameChange = (e) => {
-        let userName = e.target.value;
-        this.setState( {
-            name: userName
-        });
-        console.log(this.state.name);
-    }
-
-    handleEmailChange = (e) => {
-        let userEmail = e.target.value;
-        this.setState({
-            email: userEmail
-        })
-    }
-    render() {
-        let form =
-        <FormContainer>
-        <ContactHeader>Skontaktuj się z nami</ContactHeader>
-        <ContactForm onSubmit={this.handleSubmit}>
-        <ContactData>
-            <ContactInput type='text' value={this.state.name} onChange={this.handleNameChange} placeholder='Imię'/>
-            <ContactInput type='email' value={this.state.email} onChange={this.handleEmailChange} placeholder='Email'/>
-        </ContactData>
-        <ContactMessage placeholder='Wiadomość'/>
-        <SubmitMessage type='submit' value='Wyślij'/>
-        </ContactForm>
-        </FormContainer>
-        let formSubmitted = <h3>Dzięki, {this.state.name}. Odeźwiemy się do Ciebie na {this.state.email}</h3>
-       if (this.state.didContact === true) return formSubmitted;
-
-       return form;
-
-    }
-}
-
-export default Contact;

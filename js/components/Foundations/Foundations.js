@@ -1,94 +1,20 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 
-        const FoundationHeader = styled.h4`
-            font-size: 1.5em;
-            margin-top: 20px;
-            text-align: center;
-
-            &:after {
-                content: url('./../../images/decoration.png');
-                display: block;
-                width: 100%;
-                transform: scale(.5);
-            }
-        `;
-        const Container = styled.section`
-            max-width: 1024px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-        `;
-
-        const Buttons = styled.div`
-        margin: 0 auto;
-        max-width: 600px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        align-items: center
-        `;
-        const FoundationList = styled.ul`
-            list-style: none;
-        `;
-        const FoundationPurpose = styled.p`
-            max-width: 600px;
-            padding: 20px;
-            margin: 0 auto;
-            text-align: center;
-        `;
-
-        const FoundationItem = styled.li`
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        `;
-        const FoundationInfo = styled.section`
-            padding: 10px 20px;
-            &:after {
-                content: '';
-                display: block;
-                height: 1px;
-                min-width: 400px;
-                background-color: #a9a9a9;
-                margin-top: 30px;
-            }
-        `;
-
-        const FoundationName = styled.p`
-            font-size: 1.1em;
-        `;
-
-        const FoundationMission = styled.p`
-            margin-top: 20px;
-            font-style: italic;
-            font-size: .9em;
-        `;
-
-        const FoundationNeeds = styled.p`
-            padding: 10px 20px;
-
-            &:after {
-                content: '';
-                display: block;
-                height: 1px;
-                min-width: 400px;
-                background-color: #a9a9a9;
-                margin-top: 30px;
-            }
-        `;
-
-        const PageList = styled.ul`
-            list-style: none;
-            display: flex;
-            justify-content: center;
-        `;
-
-        const PageNumber = styled.li`
-            padding: 10px;
-            margin-bottom: 20px;
-            cursor: pointer
-        `;
+import {
+    FoundationHeader,
+    Container,
+    Buttons,
+    FoundationList,
+    FoundationPurpose,
+    FoundationItem,
+    FoundationInfo,
+    FoundationName,
+    FoundationMission,
+    FoundationNeeds,
+    PageList,
+    PageNumber
+} from './FoundationsStyles.js';
 
         const foundations = [
             {
@@ -199,14 +125,19 @@ import styled, { css } from 'styled-components';
 
 
 class Foundations extends Component {
-    
-    state = {
-        text: foundations,
-        elementsPerPage: 3,
-        currentPage: 1,
-        fundsClicked: true,
-        orgsClicked: false,
-        localsClicked: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: foundations,
+            elementsPerPage: 3,
+            currentPage: 1,
+            fundsClicked: true,
+            orgsClicked: false,
+            localsClicked: false,
+            listHeight: 280
+        };
+
+        this.divNode = null;
     }
 
     handleClickFunds = () => {
@@ -237,9 +168,13 @@ class Foundations extends Component {
     }
 
     handlePageClick = () => {
-        this.setState({
-            currentPage: Number(event.target.id)
-        })
+        const liHeight = this.divNode.clientHeight;
+        this.setState(prevState => ({
+            currentPage: Number(event.target.id),
+            listHeight: (prevState.listHeight > liHeight ? prevState.listHeight: liHeight)
+        }));
+        console.log(liHeight);
+        console.log(this.state.listHeight);
     }
 
     render() {
@@ -303,7 +238,8 @@ class Foundations extends Component {
                         W naszej bazie znijdziesz listę zweryfikowanych Fundacji, z którymi wspólpracujemy.
                         Mozesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.
                     </FoundationPurpose>
-                    <FoundationList>
+                    <FoundationList ref={node => this.divNode = node}
+                                    height={this.state.listHeight}>
                         {renderElements}
                     </FoundationList>
                     <PageList>{renderPageNumbers}</PageList>

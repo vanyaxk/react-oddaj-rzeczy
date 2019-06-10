@@ -1,7 +1,7 @@
 import React from 'react';
-import LoginPanel from './LoginPanel';
-import Navigation from './Navigation';
-import RouteLogin from './../RouteLogin';
+import LoginPanel from '../LoginPanel/LoginPanel';
+import Navigation from '../Navigation/Navigation';
+import RouteLogin from '../../RouteLogin';
 import styled from 'styled-components';
 
 const PageHeader = styled.div`

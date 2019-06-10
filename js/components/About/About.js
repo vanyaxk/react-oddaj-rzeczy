@@ -1,45 +1,15 @@
 import React from 'react';
-import styled from 'styled-components';
 
-const AboutUs = styled.section`
-    display: flex;
-    background-color: #EBEBEB;
-    padding: 20px 0;
-`;
 
-const AboutText = styled.article`
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #696969;
-`;
+import {
+    AboutUs,
+    AboutText,
+    AboutHeader,
+    AboutPar,
+    AboutImgContainer,
+    AboutImage
+} from './AboutStyles';
 
-const AboutHeader = styled.h4`
-    font-size: 2em;
-    text-align: center;
-
-    &:after {
-        content: url('../../../images/decoration.png');
-        display: block;
-        width: 100%;
-        transform: scale(.5);
-    }
-`;
-
-const AboutPar = styled.p`
-    text-align: center;
-    padding: 15px 35px;
-`;
-
-const AboutImgContainer = styled.div`
-    width: 50%;
-`;
-
-const AboutImage = styled.img`
-    max-width: 100%;
-`;
 
 const About = () => (
     <AboutUs id="scrollToAbout">
