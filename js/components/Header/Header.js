@@ -8,11 +8,12 @@ const PageHeader = styled.div`
     width: 100%;
     height: 100vh;
 `;
-const Header = () => {
+const Header = (props) => {
+    console.log(props);
     return (
         <PageHeader>
             <LoginPanel />
-            <RouteLogin />
+            <RouteLogin checkLoginData={props.checkLoginData} loggedIn={props.loggedIn}/>
         </PageHeader>
     );
 }

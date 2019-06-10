@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 export const MainSection = styled.section`
-    height: 100vh;
+    min-height: 100vh;
 `;
 
 export const Container = styled.div`
@@ -93,7 +93,7 @@ export const SmallPar = styled.p`
 export const MainLink = styled(Link)`
     display: inline-block;
     text-align: center;
-    margin: 20px auto 0;
+    margin: 20px auto;
     padding: 15px 30px;
     border: 1px solid #696969;
     text-transform: uppercase;

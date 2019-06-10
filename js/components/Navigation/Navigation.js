@@ -50,8 +50,8 @@ class Navigation extends Component {
                     <CTAHeader>Zacznij pomagać</CTAHeader>
                     <CTAHeader>Oddaj niechciane rzeczy w zaufane ręce</CTAHeader>
                     <CTAButtonContainer>
-                    <CTAButton>Oddaj rzeczy</CTAButton>
-                    <CTAButton>Zorganizuj zbiórkę</CTAButton>
+                    <CTAButton to='/login'>Oddaj rzeczy</CTAButton>
+                    <CTAButton to='/login'>Zorganizuj zbiórkę</CTAButton>
                     </CTAButtonContainer>
                 </CTAMessage>
             </CallToAction>

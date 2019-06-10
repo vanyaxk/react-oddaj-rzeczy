@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link, animateScroll } from "react-scroll";
+import {NavLink} from 'react-router-dom';
 
 export const Nav = styled.nav`
     width: 100%;    
@@ -67,13 +68,17 @@ export const CTAButtonContainer = styled.div`
     justify-content: space-evenly;
 `;
 
-export const CTAButton = styled.button`
-    outline: none;
-    appearance: none;
+export const CTAButton = styled(NavLink)`
+    text-decoration: none;
+    background-color: white;
     border: 1px solid #696969;
     padding: 15px;
     font-size: 1.3em;
+    font-weight: 400;
     color: #1a2a3a;
     width: 175px;
     text-transform: uppercase;
+    display: flex;
+    jsutify-content: center;
+    align-items: center;
 `;

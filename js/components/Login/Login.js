@@ -17,14 +17,14 @@ import {
 
 class Login extends Component {
     state = { 
-        login:'',
+        email:'',
         password: ''
     }
 
     handleLoginSubmit = (e) => {
         e.preventDefault();
-        const {login, password} = this.state;
-        this.props.checkLoginData(login, password);
+        const {email, password} = this.state;
+        this.props.checkLoginData(email, password);
     }
 
     handleInputChange = (e) => {
@@ -39,8 +39,16 @@ class Login extends Component {
             <LoginContainer>
                 <LoginForm onSubmit={this.handleLoginSubmit}>
                     <LoginHeader>Zaloguj się</LoginHeader>
-                    <EmailInput type='email' placeholder='Email' value={this.state.email}/>
-                    <PasswordInput type='password' placeholder='Hasło' value={this.state.password}/>
+                    <EmailInput type='email' 
+                                name='email'
+                                placeholder='Email'
+                                value={this.state.email} 
+                                onChange={this.handleInputChange}/>
+                    <PasswordInput type='password' 
+                                    name='password'
+                                    placeholder='Hasło' 
+                                    value={this.state.password} 
+                                    onChange={this.handleInputChange}/>
                     <LoginLinks>
                         <RegisterLink to='register'>Załóz konto</RegisterLink>
                         <LogIn type='submit' value='Zaloguj się'/>
