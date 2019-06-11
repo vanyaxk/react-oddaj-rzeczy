@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHandHoldingHeart, faDownload, faGlasses, faTruck} from '@fortawesome/free-solid-svg-icons';
+import { animateScroll as scroll }from 'react-scroll'
 
 import {
     MainSection,
@@ -27,6 +28,10 @@ class Main extends Component {
         bags: 7,
         orgs: 5,
         cols: 10
+    }
+
+    scrollToTop = (e) => {
+        scroll.scrollToTop();
     }
 
     render() {
@@ -81,7 +86,7 @@ class Main extends Component {
                         <SmallPar>Ustalicie z nim dogodny termin</SmallPar>
                     </MainGuide>
                     </GuidesContainer>
-                    <MainLink to='/register'>Załóz konto</MainLink>
+                    <MainLink to='/register' onClick={this.scrollToTop}>Załóz konto</MainLink>
                 </MainGuides>
             </MainSection>
         )

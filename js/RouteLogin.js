@@ -6,8 +6,7 @@ import Login from './components/Login/Login';
 
 const RouteLogin = (props) => {
     const {loggedIn, checkLoginData, addNewUser} = props;
-    console.log(loggedIn, checkLoginData);
-    return(
+    return (
     <Switch>
         <Route exact path="/" component={Navigation} />
         <Route path='/login' render={() => <Login checkLoginData={checkLoginData} loggedIn={loggedIn}/>} />

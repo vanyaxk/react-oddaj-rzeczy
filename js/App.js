@@ -73,6 +73,7 @@ class App extends Component {
                 throw new Error('error')
             }
             data.filter(user =>{
+                console.log(user);
                 if(user.email === email && user.password === password){
                     console.log('login successfull')
                     this.setState({
@@ -80,8 +81,10 @@ class App extends Component {
                         email: email
                     });
                     return true;
+                    
                 }
                 console.log('login unsuccessful');
+                console.log(this.state.loggedIn);
                 return false;
             })
         }).catch(err => {
