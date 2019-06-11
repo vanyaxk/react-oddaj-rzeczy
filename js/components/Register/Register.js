@@ -12,16 +12,57 @@ import {
 } from './RegisterStyles';
 
 class Register extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props, 'register');
+        this.state = {
+            registered: false,
+            name: '',
+            email: '',
+            password: '',
+            repeatPassword: '',
+            id: ''
+        }
+    }
+    
+
+    handleRegister = (e) => {
+        e.preventDefault();
+        const {email, password, name} = this.state;
+        this.setState({
+            registered: true
+        });
+        this.props.addNewUser(name, email, password);
+    }
+
+    handleInputChange = (e) => {
+        const input = e.target;
+        this.setState({
+            [input.name] : input.value
+        });
+    }
     render() {
         return (
-            <RegistrationContainer>
+            <RegistrationContainer onSubmit={this.handleRegister}>
             <RegisterForm>
                 <RegistrationHeader>Załóz konto</RegistrationHeader>
                 
-                    <DataInput type='text' placeholder='Imię'/>
-                    <DataInput type='email' placeholder='Email'/>
-                    <DataInput type='password' placeholder='Hasło'/>
-                    <DataInput type='password' placeholder='Powtórz hasło'/>
+                    <DataInput type='text'
+                                name='name' 
+                                placeholder='Imię'
+                                onChange={this.handleInputChange}/>
+                    <DataInput type='email' 
+                                name='email' 
+                                placeholder='Email' 
+                                onChange={this.handleInputChange}/>
+                    <DataInput type='password'
+                                name='password' 
+                                placeholder='Hasło' 
+                                onChange={this.handleInputChange}/>
+                    <DataInput type='password' 
+                                name='repeatPassword' 
+                                placeholder='Powtórz hasło' 
+                                onChange={this.handleInputChange}/>
                 
 
                 <RegistrationLinks>

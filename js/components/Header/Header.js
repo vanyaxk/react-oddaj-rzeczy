@@ -9,11 +9,11 @@ const PageHeader = styled.div`
     height: 100vh;
 `;
 const Header = (props) => {
-    console.log(props);
+    console.log(props, 'header');
     return (
         <PageHeader>
             <LoginPanel />
-            <RouteLogin checkLoginData={props.checkLoginData} loggedIn={props.loggedIn}/>
+            <RouteLogin checkLoginData={props.checkLoginData} loggedIn={props.loggedIn} addNewUser={props.addNewUser}/>
         </PageHeader>
     );
 }

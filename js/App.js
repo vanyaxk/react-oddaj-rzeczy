@@ -30,10 +30,37 @@ const GlobalReset = createGlobalStyle`
 class App extends Component {
     state = {
         loggedIn: false,
-        userName: false
+        email: false,
+        error: ''
     }
+
+    addNewUser = (name, email, password) => {
+        fetch("http://localhost:3002/users", {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: email,
+              name: name,
+              email: email,
+              password: password
+            })
+          })
+          .then(resp => {
+              if (resp.ok) {
+                  return resp.json();
+              }
+          })
+          .then(respJSON => {
+            console.log(respJSON);
+          })
+          .catch(err => {
+              console.log('Error: ' + err);
+          });
+    };
     
-    checkLoginData = (userName, password) => {
+    checkLoginData = (email, password) => {
         fetch("http://localhost:3002/users")
         .then(resp => {
             if(resp.ok){
@@ -46,16 +73,16 @@ class App extends Component {
                 throw new Error('error')
             }
             data.filter(user =>{
-                if(user.userName === userName && user.password === password){
+                if(user.email === email && user.password === password){
                     console.log('login successfull')
                     this.setState({
                         loggedIn: true,
-                        userName: userName
-                    })
-                    return true
+                        email: email
+                    });
+                    return true;
                 }
-                console.log('login unsuccessful')
-                return false
+                console.log('login unsuccessful');
+                return false;
             })
         }).catch(err => {
             this.setState({
@@ -70,7 +97,7 @@ class App extends Component {
             <HashRouter>
                 <>
                 <GlobalReset />
-                <Header checkLoginData={this.checkLoginData} loggedIn={this.state.loggedIn}/>
+                <Header checkLoginData={this.checkLoginData} loggedIn={this.state.loggedIn} addNewUser={this.addNewUser}/>
                 <Main />
                 <About />
                 

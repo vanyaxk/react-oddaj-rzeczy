@@ -1,8 +1,28 @@
 {
-    "users": [
-        {
-            "email": "i.kohut@yahoo.com",
-            "password": "blablabla"
-        }
-    ]
+  "users": [
+    {
+      "id": "1",
+      "name": "Ivan",
+      "email": "i.kohut@yahoo.com",
+      "password": "123"
+    },
+    {
+      "id": "boy@gmail.com",
+      "name": "yo",
+      "email": "boy@gmail.com",
+      "password": "dlkgndfjkgn"
+    },
+    {
+      "id": "jsbfbs@kjbsksbf",
+      "name": "sdfksbfkb",
+      "email": "jsbfbs@kjbsksbf",
+      "password": "kdjbfskjfb"
+    },
+    {
+      "id": "ldngldfng@lsngdlfng",
+      "name": "dfglksngln",
+      "email": "ldngldfng@lsngdlfng",
+      "password": "ldngd"
+    }
+  ]
 }

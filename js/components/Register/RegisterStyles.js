@@ -49,6 +49,7 @@ export const LoginLink = styled(Link)`
 `;
 
 export const RegisterButton = styled.input`
+    cursor: pointer;
     border: 1px solid #696969;
     outline: none;
     padding: 10px;
