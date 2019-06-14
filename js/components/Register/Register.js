@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 
 
 import {
@@ -32,6 +33,7 @@ class Register extends Component {
             registered: true
         });
         this.props.addNewUser(name, email, password);
+        this.props.history.push('/login');
     }
 
     handleInputChange = (e) => {
@@ -74,4 +76,4 @@ class Register extends Component {
     }
 }
 
-export default Register;
+export default withRouter(Register);

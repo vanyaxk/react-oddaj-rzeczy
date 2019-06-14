@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 import {
     WelcomeButton,
     WelcomeSection,
@@ -23,13 +24,18 @@ class LoggedIn extends Component {
         }));
     }
 
+    handleClick = () => {
+        this.props.handleLogOut();
+        this.props.history.push('/');
+    }
+
     render() {
         const options = 
         <WelcomeSettings>
             <WelcomeSetting>Profil</WelcomeSetting>
             <WelcomeSetting>Ustawienia</WelcomeSetting>
             <WelcomeSetting>Moje zbiórki</WelcomeSetting>
-            <WelcomeSetting onClick={this.props.handleLogOut}>Wyloguj</WelcomeSetting>
+            <WelcomeSetting onClick={this.handleClick}>Wyloguj</WelcomeSetting>
         </WelcomeSettings>;
         return (
             <WelcomeSection>
@@ -40,4 +46,4 @@ class LoggedIn extends Component {
     }
 };
 
-export default LoggedIn;
+export default withRouter(LoggedIn);

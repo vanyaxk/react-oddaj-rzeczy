@@ -29,6 +29,12 @@
       "name": "Ivan",
       "email": "i.kohut@ljnsdbs.ondfsib",
       "password": "odhgdg"
+    },
+    {
+      "id": "spok@gmail.com",
+      "name": "Spok",
+      "email": "spok@gmail.com",
+      "password": "123"
     }
   ]
 }

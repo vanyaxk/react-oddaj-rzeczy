@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM  from 'react-dom';
-import {HashRouter, Route} from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import Main from './components/Main/Main';
 import About from './components/About';
 //styled-components
@@ -39,7 +39,6 @@ class App extends Component {
         this.setState({
             loggedIn: false
         });
-        console.log('clicked');
     }
 
     addNewUser = (name, email, password) => {
