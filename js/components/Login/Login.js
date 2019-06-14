@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {withRouter} from 'react-router-dom';
 
 import {
     LoginContainer,
@@ -24,12 +25,14 @@ class Login extends Component {
         e.preventDefault();
         const {email, password} = this.state;
         this.props.checkLoginData(email, password);
+        this.props.history.push('/');
+        console.log(this.props.history);
     }
 
     handleInputChange = (e) => {
         const input = e.target;
         this.setState({
-            [input.name] : input.value
+            [input.name]: input.value
         });
     }
 
@@ -58,4 +61,4 @@ class Login extends Component {
     }
 }
 
-export default Login;
+export default withRouter(Login);

@@ -24,7 +24,6 @@ class LoginPanel extends Component {
         {name: 'Register', link: '/register'}
     ]
     render() {
-        console.log(this.props, 'loginpanel');
         const {handleLogOut, loggedIn, name} = this.props;
         let jsxLogin = this.loginItems.map(element => {
             return <LoginLink key={element.name}

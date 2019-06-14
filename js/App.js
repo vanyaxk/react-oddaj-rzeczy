@@ -115,7 +115,7 @@ class App extends Component {
                         handleLogOut={this.handleLogOut}
                         name={this.state.name}
                         />
-                <Main />
+                <Main loggedIn={this.state.loggedIn}/>
                 <About />
                 
                 <Foundations />
