@@ -31,7 +31,15 @@ class App extends Component {
     state = {
         loggedIn: false,
         email: false,
+        name: '',
         error: ''
+    }
+
+    handleLogOut = () => {
+        this.setState({
+            loggedIn: false
+        });
+        console.log('clicked');
     }
 
     addNewUser = (name, email, password) => {
@@ -78,13 +86,13 @@ class App extends Component {
                     console.log('login successfull')
                     this.setState({
                         loggedIn: true,
-                        email: email
+                        email: email,
+                        name: user.name
                     });
                     return true;
                     
                 }
                 console.log('login unsuccessful');
-                console.log(this.state.loggedIn);
                 return false;
             })
         }).catch(err => {
@@ -96,11 +104,17 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.props, this.state);
         return (
             <HashRouter>
                 <>
                 <GlobalReset />
-                <Header checkLoginData={this.checkLoginData} loggedIn={this.state.loggedIn} addNewUser={this.addNewUser}/>
+                <Header checkLoginData={this.checkLoginData}
+                        loggedIn={this.state.loggedIn}
+                        addNewUser={this.addNewUser}
+                        handleLogOut={this.handleLogOut}
+                        name={this.state.name}
+                        />
                 <Main />
                 <About />
                 
