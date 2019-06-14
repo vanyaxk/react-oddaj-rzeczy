@@ -48,6 +48,7 @@ export const StuffElement = styled.li`
     justify-content: center;
     text-align: center;
     border: 1px solid #696969;
+    background-color: #fff;
     width: 110px;
     height: 110px;
     transform: rotate(-45deg);

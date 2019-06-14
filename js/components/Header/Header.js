@@ -15,7 +15,9 @@ const Header = (props) => {
             <LoginPanel handleLogOut={props.handleLogOut}
                         loggedIn={props.loggedIn}
                         name={props.name}/>
-            <RouteLogin checkLoginData={props.checkLoginData} loggedIn={props.loggedIn} addNewUser={props.addNewUser}/>
+            <RouteLogin checkLoginData={props.checkLoginData}
+                        loggedIn={props.loggedIn}
+                        addNewUser={props.addNewUser}/>
         </PageHeader>
     );
 }

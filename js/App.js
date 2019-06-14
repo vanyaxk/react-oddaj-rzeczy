@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOM  from 'react-dom';
 import {HashRouter} from 'react-router-dom';
-import Main from './components/Main/Main';
+import MainRouter from './MainRouter';
 import About from './components/About';
 //styled-components
 import reset from 'styled-reset';
@@ -114,7 +114,7 @@ class App extends Component {
                         handleLogOut={this.handleLogOut}
                         name={this.state.name}
                         />
-                <Main loggedIn={this.state.loggedIn}/>
+                <MainRouter loggedIn={this.state.loggedIn}/>
                 <About />
                 
                 <Foundations />

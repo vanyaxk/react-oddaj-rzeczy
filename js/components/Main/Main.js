@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faHandHoldingHeart, faDownload, faGlasses, faTruck} from '@fortawesome/free-solid-svg-icons';
-import { animateScroll as scroll }from 'react-scroll'
+import { animateScroll as scroll }from 'react-scroll';
 
 import {
     MainSection,
