@@ -1,7 +1,6 @@
 import React from 'react';
 import Contact from '../Contact/Contact';
 
-import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faFacebook, faInstagram} from '@fortawesome/free-brands-svg-icons';
 

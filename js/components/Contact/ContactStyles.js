@@ -98,3 +98,28 @@ export const SubmitMessage = styled.input`
         border: 1px solid transparent;
     }
 `;
+
+export const ErrorMessage = styled.span`
+    font-size: .7rem;
+    color: red;
+    display: block;
+    margin-top: 10px;
+
+    &:first-of-type {
+
+    }
+`;
+
+export const FormSubmitted = styled.h3`
+    padding: 30px 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 400;
+    font-size: 1.2rem;
+    text-align: center;
+`;

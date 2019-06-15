@@ -30,7 +30,7 @@ class Main extends Component {
         cols: 10
     }
 
-    scrollToTop = (e) => {
+    scrollToTop = () => {
         scroll.scrollToTop();
     }
 
