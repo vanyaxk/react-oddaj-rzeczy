@@ -26,7 +26,6 @@ class Login extends Component {
         const {email, password} = this.state;
         this.props.checkLoginData(email, password);
         this.props.history.push('/');
-        console.log(this.props.history);
     }
 
     handleInputChange = (e) => {

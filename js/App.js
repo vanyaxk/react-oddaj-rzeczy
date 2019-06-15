@@ -48,7 +48,7 @@ class App extends Component {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: email,
+              id: email,
               name: name,
               email: email,
               password: password
@@ -58,9 +58,6 @@ class App extends Component {
               if (resp.ok) {
                   return resp.json();
               }
-          })
-          .then(respJSON => {
-            console.log(respJSON);
           })
           .catch(err => {
               console.log('Error: ' + err);
@@ -82,7 +79,6 @@ class App extends Component {
             data.filter(user =>{
                 console.log(user);
                 if(user.email === email && user.password === password){
-                    console.log('login successfull')
                     this.setState({
                         loggedIn: true,
                         email: email,
@@ -103,7 +99,6 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.props, this.state);
         return (
             <HashRouter>
                 <>

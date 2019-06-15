@@ -106,7 +106,7 @@ export const ErrorMessage = styled.span`
     margin-top: 10px;
 
     &:first-of-type {
-
+        text-align: right;
     }
 `;
 

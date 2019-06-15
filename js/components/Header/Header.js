@@ -9,7 +9,6 @@ const PageHeader = styled.div`
     height: 100vh;
 `;
 const Header = (props) => {
-    console.log(props);
     return (
         <PageHeader>
             <LoginPanel handleLogOut={props.handleLogOut}
