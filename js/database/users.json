@@ -35,6 +35,12 @@
       "name": "Spok",
       "email": "spok@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "jankhut@gmail.com",
+      "name": "Ivan",
+      "email": "jankhut@gmail.com",
+      "password": "123"
     }
   ]
 }

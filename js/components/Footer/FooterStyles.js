@@ -27,7 +27,7 @@ export const SocialMedia = styled.section`
     transform: translate(-50%, -50%);
 
      &> * {
-         cursor: pointer 
+         cursor: pointer;
 
          &:last-of-type {
             margin-left: 10px;

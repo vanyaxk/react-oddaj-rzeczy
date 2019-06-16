@@ -57,27 +57,33 @@ class Contact extends Component {
         }
     }
 
-    handleNameChange = (e) => {
-        let userName = e.target.value;
-        this.setState({
-            name: userName
-        });
+    // handleNameChange = (e) => {
+    //     let userName = e.target.value;
+    //     this.setState({
+    //         name: userName
+    //     });
         
-    }
+    // }
 
-    handleEmailChange = (e) => {
-        let userEmail = e.target.value;
-        this.setState({
-            email: userEmail
-        });
-    }
+    // handleEmailChange = (e) => {
+    //     let userEmail = e.target.value;
+    //     this.setState({
+    //         email: userEmail
+    //     });
+    // }
 
-    handleMessageChange = (e) => {
-        let userMessage = e.target.value;
+    handleChangeInput = (key) => (e) => {  //funkcja następująca
         this.setState({
-            message: userMessage
+            [key]: e.target.value
         });
-    }
+    } 
+
+    // handleMessageChange = (e) => {
+    //     let userMessage = e.target.value;
+    //     this.setState({
+    //         message: userMessage
+    //     });
+    // }
 
     render() {
         let form =
@@ -85,12 +91,11 @@ class Contact extends Component {
         <ContactHeader>Skontaktuj się z nami</ContactHeader>
         <ContactForm onSubmit={this.handleSubmit}>
         <ContactData>
-            <ContactInput type='text' value={this.state.name} onChange={this.handleNameChange} placeholder='Imię'/>
-            <ContactInput type='email' value={this.state.email} onChange={this.handleEmailChange} placeholder='Email'/>
-            
+            <ContactInput type='text' value={this.state.name} onChange={this.handleChangeInput('name')} placeholder='Imię'/>
+            <ContactInput type='email' value={this.state.email} onChange={this.handleChangeInput('email')} placeholder='Email'/>
         </ContactData>
         {this.state.emailError && <ErrorMessage>{this.state.emailError}</ErrorMessage>}
-        <ContactMessage placeholder='Wiadomość' onChange={this.handleMessageChange}/>
+        <ContactMessage placeholder='Wiadomość' onChange={this.handleChangeInput('message')}/>
         {this.state.messageError && <ErrorMessage>{this.state.messageError}</ErrorMessage>}
         <SubmitMessage type='submit' value='Wyślij'/>
         </ContactForm>

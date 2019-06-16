@@ -38,7 +38,7 @@ export const CallToAction = styled.div`
 
 
 export const CTAMessage = styled.div`
-    width: 40%:
+    width: 40%;
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
