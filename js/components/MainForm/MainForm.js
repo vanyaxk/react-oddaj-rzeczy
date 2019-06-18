@@ -16,7 +16,8 @@ class MainForm extends Component {
             formStep: 1,
             error: '',
             checkedItems: new Map(),
-            value: '- wybierz -'
+            value: '- wybierz -',
+            local: '- wybierz -'
         }
 
 
@@ -76,6 +77,12 @@ class MainForm extends Component {
         });
     }
 
+    handleLocalChange = (e) => {
+        this.setState({
+            local: e.target.value
+        });
+    }
+
     handleValidateSelect = () => {
         const {value} = this.state;
         if (value === '- wybierz -') {
@@ -108,7 +115,7 @@ class MainForm extends Component {
 
     
     render() {
-        const {formStep, error, checkedItems, value} = this.state;
+        const {formStep, error, checkedItems, value, local} = this.state;
         return (
             <MainFormContainer>
                 <MainFormTag>
@@ -125,6 +132,8 @@ class MainForm extends Component {
                             error={error}
                     />
                     <Step3 formStep={formStep}
+                            local={local}
+                            handleLocalChange={this.handleLocalChange}
                             error={error}/>
                     <Step4 formStep={formStep}/>
                 </MainFormTag>

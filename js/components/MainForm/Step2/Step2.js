@@ -11,9 +11,9 @@ class Step2 extends Component {
     
 
     render() {
-        if (this.props.formStep !== 2) return null;
-        const {value, handleSelectChange, error} = this.props;
-        console.log(error);
+        const {value, handleSelectChange, formStep, error} = this.props;
+        if (formStep !== 2) return null;
+        
         return (
             <FormStepTwo>
             <Label>

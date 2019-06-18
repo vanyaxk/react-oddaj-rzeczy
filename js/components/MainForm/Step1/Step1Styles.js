@@ -15,6 +15,7 @@ export const CheckboxLabel = styled.label`
 export const CheckboxName = styled.span`
   display: block;
 `;
+
 //checkbox checked styles
 const HiddenCheckbox = styled.input.attrs({type: 'checkbox'})`
     border: 0;

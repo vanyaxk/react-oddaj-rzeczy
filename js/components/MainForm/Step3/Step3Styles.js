@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
-export const FormStepTwo = styled.section`
-  display: flex;
-  flex-direction: column;
+export const FormStepThree = styled.section`
+
 `;
 
 export const Label = styled.label`
-    display: flex;
+
 `;
 
 export const Select = styled.select`
@@ -32,7 +31,15 @@ export const Option = styled.option`
          padding: 0px 2px 1px;
 `;
 
-export const ErrorSpan = styled.span`
-  font-size: .7rem;
-  color: red;
+export const InputOrg = styled.input.attrs({type: 'text', placeholder: 'Imię organizacji'})`
+  border-radius: 3px;
+  border: 1px solid #696969;
+  display: block;
+  margin: 0 0 1em;
+  padding: 10px 15px;
+  
+
+  ::placeholder {
+    color: palevioletred;
+  }
 `;

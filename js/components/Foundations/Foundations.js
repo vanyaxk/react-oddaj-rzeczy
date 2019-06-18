@@ -173,8 +173,6 @@ class Foundations extends Component {
             currentPage: Number(event.target.id),
             listHeight: (prevState.listHeight > liHeight ? prevState.listHeight: liHeight)
         }));
-        console.log(liHeight);
-        console.log(this.state.listHeight);
     }
 
     render() {
