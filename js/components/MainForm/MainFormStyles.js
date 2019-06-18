@@ -10,6 +10,7 @@ export const MainFormContainer = styled.section`
 
 export const MainFormTag = styled.form`
     height: 80%;
+    min-width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -18,7 +19,7 @@ export const MainFormTag = styled.form`
 export const MainFormButtons = styled.section`
     display: flex;
     justify-content: space-between;
-    width: 40%;
+    width: 30%;
 `;
 
 export const PrevButton = styled.button`

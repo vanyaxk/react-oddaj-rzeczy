@@ -13,25 +13,29 @@ import Step4 from './Step4';
 
 class MainForm extends Component {
     state = {
-            formStep: 1
+            formStep: 1,
+            error: '',
+            checkedItems: new Map(),
+            value: '- wybierz -'
         }
 
 
     next = () => {
         let currentStep = this.state.formStep;
+        if (currentStep === 1) {
+            this.handleValidateCheckboxes();
+            }
 
-        currentStep = currentStep >= 3 ? 4: currentStep + 1;
-        this.setState({
-            formStep: currentStep
-        })
-        console.log(this.state.formStep);
+        if (currentStep === 2) {
+            this.handleValidateSelect();
+        }
     }
+
 
     prev = () => {
         let currentStep = this.state.formStep;
 
         currentStep = currentStep <= 1 ? 1: currentStep - 1;
-
         this.setState({
             formStep: currentStep
         })
@@ -57,16 +61,72 @@ class MainForm extends Component {
         return null;
     }
 
+    handleCheckbox = (e) => {
+        const item = e.target.name;
+        const checked = e.target.checked;
+        this.setState(prevState => ({
+            checkedItems: prevState.checkedItems.set(item, checked),
+            name: item
+        }));
+    }
+
+    handleSelectChange = (e) => {
+        this.setState({
+            value: e.target.value
+        });
+    }
+
+    handleValidateSelect = () => {
+        const {value} = this.state;
+        if (value === '- wybierz -') {
+            this.setState({
+                formStep: 2,
+                error: 'You didn\'t select any option'
+            });
+            console.log('it works');
+        } else {
+            this.setState({
+                formStep: 3
+            });
+        }
+    }
+
+    handleValidateCheckboxes = () => {
+        const {checkedItems} = this.state;
+        if (checkedItems.size === 0) {
+            this.setState({
+                formStep: 1,
+                error: 'You didn\'t check any checkboxes'
+            });
+            console.log(this.state.error);
+        } else {
+            this.setState({
+                formStep: 2
+            })
+        }
+    }
+
     
     render() {
+        const {formStep, error, checkedItems, value} = this.state;
         return (
             <MainFormContainer>
                 <MainFormTag>
-                    <h1>Krok {this.state.formStep}/4</h1>
-                    <Step1 formStep={this.state.formStep}/>
-                    <Step2 formStep={this.state.formStep}/>
-                    <Step3 formStep={this.state.formStep}/>
-                    <Step4 formStep={this.state.formStep}/>
+                    <h1>Krok {formStep}/4</h1>
+                    <Step1 formStep={formStep}
+                           handleValidateCheckboxes={this.handleValidateCheckboxes}
+                           error={error}
+                           checkedItems={checkedItems}
+                           handleCheckbox={this.handleCheckbox}
+                           />
+                    <Step2 formStep={formStep}
+                            value={value}
+                            handleSelectChange={this.handleSelectChange}
+                            error={error}
+                    />
+                    <Step3 formStep={formStep}
+                            error={error}/>
+                    <Step4 formStep={formStep}/>
                 </MainFormTag>
 
                 <MainFormButtons>

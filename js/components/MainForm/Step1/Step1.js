@@ -3,7 +3,8 @@ import {
     FormStepOne,
     Checkbox,
     CheckboxLabel,
-    CheckboxName
+    CheckboxName,
+    ErrorSpan
 } from './Step1Styles';
 
 const checkboxes = [
@@ -30,26 +31,9 @@ const checkboxes = [
 ]
 
 class Step1 extends Component {
-    state = {
-
-        checkedItems: new Map(),
-        name: ''
-    }
-
-    handleCheck = (e) => {
-        const item = e.target.name;
-        const checked = e.target.checked;
-        this.setState(prevState => ({
-            checkedItems: prevState.checkedItems.set(item, checked),
-            name: item
-        }))
-
-        console.log(this.state.checkedItems);
-    }
 
     render() {
         if (this.props.formStep !== 1) return null;
-        
         return (
             <FormStepOne>
                 {checkboxes.map(checkbox => (
@@ -57,14 +41,16 @@ class Step1 extends Component {
                         
                         <Checkbox key={checkbox.key}
                                     name={checkbox.name}
-                                    onChange={this.handleCheck}
-                                    checked={this.state.checkedItems.get(checkbox.name) ? 
-                                             this.state.checkedItems.get(checkbox.name) : 
+                                    onChange={this.props.handleCheckbox}
+                                    checked={this.props.checkedItems.get(checkbox.name) ? 
+                                             this.props.checkedItems.get(checkbox.name) : 
                                              false}/>
                         <CheckboxName>{checkbox.name}</CheckboxName>
+                        
                     </CheckboxLabel>
                     )
                 )}
+                {this.props.error && <ErrorSpan>{this.props.error}</ErrorSpan>}
             </FormStepOne>
         )
     }

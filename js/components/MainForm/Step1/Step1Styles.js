@@ -70,4 +70,9 @@ export const Checkbox = props => (
     </StyledCheckbox>
   </CheckboxContainer>
     
-)
+);
+
+export const ErrorSpan = styled.span`
+  font-size: .7rem;
+  color: red;
+`;
