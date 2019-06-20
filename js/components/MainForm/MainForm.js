@@ -17,10 +17,16 @@ class MainForm extends Component {
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',
-            local: '- wybierz -'
+            local: '- wybierz -',
+            kidsClicked: false,
+            momsClicked: false,
+            homelessClicked: false,
+            disabledClicked: false,
+            eldersClicked: false,
         }
 
 
+        //previous and next step with validation on the next step
     next = () => {
         let currentStep = this.state.formStep;
         if (currentStep === 1) {
@@ -29,6 +35,10 @@ class MainForm extends Component {
 
         if (currentStep === 2) {
             this.handleValidateSelect();
+        }
+
+        if (currentStep === 3) {
+            this.handleValidateLocal();
         }
     }
 
@@ -41,6 +51,9 @@ class MainForm extends Component {
             formStep: currentStep
         })
     }
+
+
+    //show/hide buttons
 
     get prevButton() {
         let currentStep = this.state.formStep;
@@ -61,6 +74,7 @@ class MainForm extends Component {
 
         return null;
     }
+    //checkbox methods
 
     handleCheckbox = (e) => {
         const item = e.target.name;
@@ -70,6 +84,24 @@ class MainForm extends Component {
             name: item
         }));
     }
+
+    // checkbox validation  
+    handleValidateCheckboxes = () => {
+        const {checkedItems} = this.state;
+        if (checkedItems.size === 0) {
+            this.setState({
+                formStep: 1,
+                error: 'You didn\'t check any checkboxes'
+            });
+            console.log(this.state.error);
+        } else {
+            this.setState({
+                formStep: 2
+            })
+        }
+    }
+
+    //methods for select fields (localization and number of bags)
 
     handleSelectChange = (e) => {
         this.setState({
@@ -83,6 +115,7 @@ class MainForm extends Component {
         });
     }
 
+    //select validation
     handleValidateSelect = () => {
         const {value} = this.state;
         if (value === '- wybierz -') {
@@ -98,20 +131,30 @@ class MainForm extends Component {
         }
     }
 
-    handleValidateCheckboxes = () => {
-        const {checkedItems} = this.state;
-        if (checkedItems.size === 0) {
+    handleValidateLocal = () => {
+        const {local} = this.state;
+
+        if (local === '- wybierz -') {
             this.setState({
-                formStep: 1,
-                error: 'You didn\'t check any checkboxes'
+                formStep: 3,
+                error: 'Nie wybrałeś miasta'
             });
-            console.log(this.state.error);
         } else {
             this.setState({
-                formStep: 2
-            })
+                formStep: 4
+            });
         }
     }
+
+
+    //help buttons 
+
+    handleValueChange = (key) => (e) => {
+        this.setState(prevState =>({
+            [key]: !prevState[key]
+        }));
+    }
+    
 
     
     render() {
@@ -134,7 +177,14 @@ class MainForm extends Component {
                     <Step3 formStep={formStep}
                             local={local}
                             handleLocalChange={this.handleLocalChange}
-                            error={error}/>
+                            error={error}
+                            handleValueChange={this.handleValueChange}
+                            kidsClicked={this.state.kidsClicked}
+                            momsClicked={this.state.momsClicked}
+                            homelessClicked={this.state.homelessClicked}
+                            disabledClicked={this.state.disabledClicked}
+                            eldersClicked={this.state.eldersClicked}
+                            />
                     <Step4 formStep={formStep}/>
                 </MainFormTag>
 
