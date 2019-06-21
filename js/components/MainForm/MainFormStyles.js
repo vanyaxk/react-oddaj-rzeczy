@@ -35,7 +35,7 @@ export const MainFormTag = styled.form`
 export const MainFormButtons = styled.section`
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    width: 100%;
 `;
 
 export const PrevButton = styled.button`
@@ -48,6 +48,16 @@ export const PrevButton = styled.button`
 `;
 
 export const NextButton = styled.button`
+    appearance: none;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: 1px solid #696969;
+    margin-bottom: 10px;
+`;
+
+export const SubmitButton = styled.input.attrs({type: 'submit', value: 'Wyślij'})`
     appearance: none;
     border: none;
     font-size: 1rem;

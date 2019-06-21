@@ -7,7 +7,8 @@ import {
     MainFormTag, 
     MainFormButtons, 
     PrevButton, 
-    NextButton 
+    NextButton,
+    SubmitButton
 } from './MainFormStyles';
 import Step1 from './Step1';
 import Step2 from './Step2';
@@ -86,6 +87,8 @@ class MainForm extends Component {
 
         if (currentStep <= 3) {
             return <NextButton onClick={this.next}>Dalej</NextButton>
+        }   else if (currentStep === 4) {
+            return <SubmitButton></SubmitButton>
         }
 
         return null;
@@ -176,19 +179,32 @@ class MainForm extends Component {
     //address form 
 
     handleChangeAddressInput = (key) => (e) => {
+        const input = e.target;
         this.setState({
             address: {
-                [key]: e.target.value
+                ...this.state.address,
+               [key]: input.value
             }
         });
+
+        console.log(this.state.address);
     }
 
     handleChangeDeadlineInput = (key) => (e) => {
         this.setState({
-            deadline: {
-                [key]: e.target.value
-            }
+                deadline: {
+                    ...this.state.deadline,
+                    [key]: e.target.value
+                }
         });
+        console.log(this.state.deadline);
+    }
+
+    //form submitssion
+
+    submitForm = (e) => {
+        e.preventDefault();
+        console.log('form submitted');
     }
     
     render() {
@@ -202,7 +218,7 @@ class MainForm extends Component {
                     {this.state.formMessage}
                 </MainFormMessage>
                 <MainFormStepCounter>Krok {formStep}/4</MainFormStepCounter>
-                <MainFormTag>
+                <MainFormTag onSubmit={this.submitForm}>
                     <Step1 formStep={formStep}
                            handleValidateCheckboxes={this.handleValidateCheckboxes}
                            error={error}
@@ -237,12 +253,13 @@ class MainForm extends Component {
                            hour={hour}
                            message={message}
                     />
+                    <MainFormButtons>
+                        {this.prevButton}
+                        {this.nextButton}
+                    </MainFormButtons>
                 </MainFormTag>
 
-                <MainFormButtons>
-                    {this.prevButton}
-                    {this.nextButton}
-                </MainFormButtons>
+                
             </MainFormContainer>
         )
     }

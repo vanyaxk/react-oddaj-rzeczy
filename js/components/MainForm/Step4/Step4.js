@@ -17,7 +17,6 @@ import {
 class Step4 extends Component {
     render() {
         if (this.props.formStep !== 4) return null;
-        console.log(this.props);
         const {
             handleChangeAddressInput,
             handleChangeDeadlineInput,
@@ -35,15 +34,18 @@ class Step4 extends Component {
             <FormStepFour>
                 <AddressInputs>
                 <AddressHeader>Adres odbioru</AddressHeader>
-                    <AddressLabel>Ulica <AddressInput value={street} 
+                    <AddressLabel>Ulica <AddressInput name='street'
+                                                      value={street} 
                                                       onChange={handleChangeAddressInput('street')}
                                                       />
                     </AddressLabel>
-                    <AddressLabel>Miasto <AddressInput onChange={handleChangeAddressInput('city')}
+                    <AddressLabel>Miasto <AddressInput  name='city'
+                                                        onChange={handleChangeAddressInput('city')}
                                                         value={city}
                                                         />
                     </AddressLabel>
-                    <AddressLabel>Kod Pocztowy <AddressInput    value={postcode}
+                    <AddressLabel>Kod Pocztowy <AddressInput    name='postcode'
+                                                                value={postcode}
                                                                 onChange={handleChangeAddressInput('postcode')}
                                                         />
                     </AddressLabel>
@@ -56,7 +58,7 @@ class Step4 extends Component {
                 
                 <DeadlineInputs>    
                 <DeadlineHeader>Termin odbioru</DeadlineHeader>
-                    <DeadlineLabel>Data <DeadlineInput  value={date}
+                    <DeadlineLabel>Data <DeadlineInput  value={this.props.date}
                                                         onChange={handleChangeDeadlineInput('date')}
                                                         />
                     
