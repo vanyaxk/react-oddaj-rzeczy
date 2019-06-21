@@ -23,23 +23,18 @@ const Stuff = () => {
     ];
     return (
         <StuffSection>
-        <Container>
-            <StuffHeader>Oddaj Rzeczy, ktorych nie potrzebyjesz, potzerbującym</StuffHeader>
-            <StuffHint>Wystarczą cztery proste kroki:</StuffHint>
-            <StuffList>
-                {stepElements.map((element, index) => {
-                    return <StuffElement key={index}>
-                        <StepNumber>{index + 1}</StepNumber>
-                        <StepDesc>{element}</StepDesc>
-                    </StuffElement>   
-                })}
-            </StuffList>
-        </Container>
-
-        <StuffMessage>
-            <StuffBoldMessage>Wazne!</StuffBoldMessage>
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać
-        </StuffMessage>
+            <Container>
+                <StuffHeader>Oddaj Rzeczy, ktorych nie potrzebyjesz, potzerbującym</StuffHeader>
+                <StuffHint>Wystarczą cztery proste kroki:</StuffHint>
+                <StuffList>
+                    {stepElements.map((element, index) => {
+                        return <StuffElement key={index}>
+                            <StepNumber>{index + 1}</StepNumber>
+                            <StepDesc>{element}</StepDesc>
+                        </StuffElement>   
+                    })}
+                </StuffList>
+            </Container>
         </StuffSection>
     )
 }

@@ -9,6 +9,7 @@ export const StepFourHeader = styled.h4`
     text-align: center;
     font-size: 1rem;
     font-weight: 700;
+    margin-bottom: 25px;
 `;
 
 export const AddressLabel = styled.label`
@@ -62,7 +63,7 @@ export const  DeadlineInput = styled.input.attrs({type: 'text'})`
     font-weight: 300;
 `;
 
-export const DeadlineMessage = styled.textarea.attrs({wrap: 'hard', rows: '5'})`
+export const DeadlineMessage = styled.textarea.attrs({wrap: 'hard', rows: '6'})`
     resize: none;
     margin-top: 10px;
     padding: 10px;

@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import { 
+    MainFormMessage,
+    MainFormBoldMessage,
+    MainFormStepCounter,
     MainFormContainer, 
     MainFormTag, 
     MainFormButtons, 
@@ -13,7 +16,7 @@ import Step4 from './Step4';
 
 class MainForm extends Component {
     state = {
-            formStep: 1,
+            formStep: 4,
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',
@@ -23,6 +26,19 @@ class MainForm extends Component {
             homelessClicked: false,
             disabledClicked: false,
             eldersClicked: false,
+            formMessage: 'Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać',
+            address: {
+                street: '',
+                city: '',
+                postcode: '',
+                phone: ''
+            },
+            deadline: {
+                date: '',
+                hour: '',
+                message: ''
+            }
+
         }
 
 
@@ -96,7 +112,8 @@ class MainForm extends Component {
             console.log(this.state.error);
         } else {
             this.setState({
-                formStep: 2
+                formStep: 2,
+                formMessage: 'Wszystkie rzeczy do oddania spakuj w 60l worki. Dokładną instukcje znajdziesz u nas na stronie'
             })
         }
     }
@@ -126,7 +143,8 @@ class MainForm extends Component {
             console.log('it works');
         } else {
             this.setState({
-                formStep: 3
+                formStep: 3,
+                formMessage: 'Jeśli wiesz, komu chcesz pomóc, mozesz wpisać nazwę tej organizacji w wyszukiwarce'
             });
         }
     }
@@ -155,14 +173,36 @@ class MainForm extends Component {
         }));
     }
     
+    //address form 
 
+    handleChangeAddressInput = (key) => (e) => {
+        this.setState({
+            address: {
+                [key]: e.target.value
+            }
+        });
+    }
+
+    handleChangeDeadlineInput = (key) => (e) => {
+        this.setState({
+            deadline: {
+                [key]: e.target.value
+            }
+        });
+    }
     
     render() {
         const {formStep, error, checkedItems, value, local} = this.state;
+        const {street, city, postcode, phone} = this.state.address;
+        const {date, hour, message} = this.state.deadline;
         return (
             <MainFormContainer>
+                <MainFormMessage>
+                    <MainFormBoldMessage>Wazne!</MainFormBoldMessage>
+                    {this.state.formMessage}
+                </MainFormMessage>
+                <MainFormStepCounter>Krok {formStep}/4</MainFormStepCounter>
                 <MainFormTag>
-                    <h1>Krok {formStep}/4</h1>
                     <Step1 formStep={formStep}
                            handleValidateCheckboxes={this.handleValidateCheckboxes}
                            error={error}
@@ -185,7 +225,18 @@ class MainForm extends Component {
                             disabledClicked={this.state.disabledClicked}
                             eldersClicked={this.state.eldersClicked}
                             />
-                    <Step4 formStep={formStep}/>
+                    <Step4 formStep={formStep}
+                           error={error}
+                           handleChangeAddressInput={this.handleChangeAddressInput}
+                           handleChangeDeadlineInput={this.handleChangeDeadlineInput}
+                           street={street}
+                           city={city}
+                           postcode={postcode}
+                           phone={phone}
+                           date={date}
+                           hour={hour}
+                           message={message}
+                    />
                 </MainFormTag>
 
                 <MainFormButtons>
