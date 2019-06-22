@@ -9,14 +9,35 @@ const PageHeader = styled.div`
     height: 100vh;
 `;
 const Header = (props) => {
+    const {
+        handleLogOut, 
+        loggedIn, 
+        addNewUser, 
+        handleValidateRegister, 
+        handleInputChange,
+        checkLoginData,
+        error,
+        name, 
+        email, 
+        password, 
+        repeatPassword 
+    } = props;
     return (
         <PageHeader>
-            <LoginPanel handleLogOut={props.handleLogOut}
-                        loggedIn={props.loggedIn}
-                        name={props.name}/>
-            <RouteLogin checkLoginData={props.checkLoginData}
-                        loggedIn={props.loggedIn}
-                        addNewUser={props.addNewUser}/>
+            <LoginPanel handleLogOut={handleLogOut}
+                        loggedIn={loggedIn}
+                        name={name}/>
+            <RouteLogin checkLoginData={checkLoginData}
+                        loggedIn={loggedIn}
+                        addNewUser={addNewUser}
+                        handleValidateRegister={handleValidateRegister}
+                        handleInputChange={handleInputChange}
+                        error={error}
+                        name={name}
+                        email={email}
+                        password={password}
+                        repeatPassword={repeatPassword}
+                        />
         </PageHeader>
     );
 }

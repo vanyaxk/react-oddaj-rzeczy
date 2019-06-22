@@ -47,6 +47,24 @@
       "name": "Don Quixote",
       "email": "donquixote@gmail.com",
       "password": "123"
+    },
+    {
+      "id": "jshfh@kjsjkl.com",
+      "name": "Ivan",
+      "email": "jshfh@kjsjkl.com",
+      "password": "123"
+    },
+    {
+      "id": "dsf@sdf",
+      "name": "sdf",
+      "email": "dsf@sdf",
+      "password": "df"
+    },
+    {
+      "id": "jankhut@blaueberry.com",
+      "name": "Vanyushka",
+      "email": "jankhut@blaueberry.com",
+      "password": "123"
     }
   ]
 }

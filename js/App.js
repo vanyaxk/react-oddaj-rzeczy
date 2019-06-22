@@ -28,18 +28,49 @@ const GlobalReset = createGlobalStyle`
 `;
 
 class App extends Component {
-    state = {
-        loggedIn: false,
-        email: false,
-        name: '',
-        error: ''
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            loggedIn: false,
+            email: '',
+            password: '',
+            repeatPassword: '',
+            name: '',
+            error: ''
+        }
     }
 
-    handleLogOut = () => {
-        this.setState({
-            loggedIn: false
-        });
+
+    handleValidateRegister = () => {
+        let valid = true;
+        const {email, password, repeatPassword, name} = this.state;
+        let emailRegex = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
+        if (emailRegex.test(email) === false) {
+            valid = false;
+            this.setState({
+                error: 'Email is invalid'
+            });
+        }
+
+        if (password !== repeatPassword) {
+            valid = false;
+            this.setState({
+                error: 'Passwords don\'t match'
+            })
+        }
+
+        if (name.length <= 2) {
+            valid = false;
+            console.log(name.length);
+            this.setState({
+                error: 'Name should have at least 2 characters'
+            });
+        }
+
+        return valid;
     }
+    
 
     addNewUser = (name, email, password) => {
         fetch("http://localhost:3002/users", {
@@ -64,6 +95,8 @@ class App extends Component {
           });
     };
     
+
+    //methods for login component
     checkLoginData = (email, password) => {
         fetch("http://localhost:3002/users")
         .then(resp => {
@@ -98,22 +131,46 @@ class App extends Component {
         })
     }
 
+    handleLogOut = () => {
+        this.setState({
+            loggedIn: false
+        });
+    }
+
+    //universal function for forms 
+
+    handleInputChange = (key) => (e) => {
+        const input = e.target;
+        this.setState({
+            [key] : input.value
+        });
+    }
+
     render() {
+        const {loggedIn, error, name, email, password, repeatPassword} = this.state;
         return (
             <HashRouter>
                 <>
                 <GlobalReset />
                 <Header checkLoginData={this.checkLoginData}
-                        loggedIn={this.state.loggedIn}
+                        loggedIn={loggedIn}
                         addNewUser={this.addNewUser}
+                        handleValidateRegister={this.handleValidateRegister}
+                        handleInputChange={this.handleInputChange}
+                        error={error}
                         handleLogOut={this.handleLogOut}
-                        name={this.state.name}
+                        name={name}
+                        email={email}
+                        password={password}
+                        repeatPassword={repeatPassword}
                         />
-                <MainRouter loggedIn={this.state.loggedIn}/>
+                <MainRouter loggedIn={loggedIn}
+                            handleInputChange={this.handleInputChange}
+                />
                 <About />
                 
                 <Foundations />
-                <Footer />
+                <Footer handleInputChange={this.handleInputChange}/>
                 </>
             </HashRouter>
     );

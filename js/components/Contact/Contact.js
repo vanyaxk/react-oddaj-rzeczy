@@ -16,6 +16,7 @@ class Contact extends Component {
     state = {
         name: '',
         email: '',
+        message: '',
         didContact: false,
         emailValid: false,
         emailError: false,
@@ -46,7 +47,33 @@ class Contact extends Component {
       }
       return valid;
   }
+    //onBlur validation
+    validateEmail = () => {
+        let valid = true;
+        let emailRegex = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
+        if (emailRegex.test(this.state.email) === false) {
+            valid = false;
+            this.setState({
+                emailError: 'Email is invalid'
+            });
+        }
 
+        return valid;
+    }
+
+    validateMessage = () => {
+        let valid = true;
+        if (this.state.message.length <= 4) {
+            valid = false;
+            this.setState({
+                messageError: 'Message must be at least 5 characters long'
+            });
+            
+        }
+        return valid;
+    }
+
+    //form submission
     handleSubmit = (e) => {
         e.preventDefault();
         if (this.validateForm()) {
@@ -91,11 +118,22 @@ class Contact extends Component {
         <ContactHeader>Skontaktuj się z nami</ContactHeader>
         <ContactForm onSubmit={this.handleSubmit}>
         <ContactData>
-            <ContactInput type='text' value={this.state.name} onChange={this.handleChangeInput('name')} placeholder='Imię'/>
-            <ContactInput type='email' value={this.state.email} onChange={this.handleChangeInput('email')} placeholder='Email'/>
+            <ContactInput type='text' 
+                          value={this.state.name} 
+                          onChange={this.handleChangeInput('name')} 
+                          placeholder='Imię'/>
+            <ContactInput type='email' 
+                          value={this.state.email} 
+                          onChange={this.handleChangeInput('email')} 
+                          onBlur={this.validateEmail} 
+                          placeholder='Email'/>
         </ContactData>
         {this.state.emailError && <ErrorMessage>{this.state.emailError}</ErrorMessage>}
-        <ContactMessage placeholder='Wiadomość' onChange={this.handleChangeInput('message')}/>
+        <ContactMessage placeholder='Wiadomość' 
+                        value={this.state.message}
+                        onChange={this.handleChangeInput('message')}
+                        onBlur={this.validateMessage}
+                        />
         {this.state.messageError && <ErrorMessage>{this.state.messageError}</ErrorMessage>}
         <SubmitMessage type='submit' value='Wyślij'/>
         </ContactForm>

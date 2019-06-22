@@ -56,3 +56,8 @@ export const RegisterButton = styled.input`
     font-size: 1rem;
     font-weight: 300;
 `;
+
+export const ErrorSpan = styled.span`
+    color: red;
+    font-size: .7rem;
+`;

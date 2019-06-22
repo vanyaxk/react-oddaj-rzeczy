@@ -11,12 +11,12 @@ import {
     SocialMedia
 } from './FooterStyles';
 
-const Footer = () => {
+const Footer = (props) => {
     return (
         <PageFooter id="scrollToContact">
             <Container>
 
-                <Contact />
+                <Contact handleInputChange={props.handleInputChange}/>
 
                 <Copyright>Copyright &copy; Ivan Kohut</Copyright>
                 <SocialMedia>

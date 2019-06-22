@@ -16,9 +16,13 @@ import {
 
 
 class Login extends Component {
-    state = { 
-        email:'',
-        password: ''
+    constructor(props) {
+        super(props);
+
+        this.state = { 
+            email:'',
+            password: ''
+        }
     }
 
     handleLoginSubmit = (e) => {
@@ -36,6 +40,7 @@ class Login extends Component {
     }
 
     render() {
+        
         return (
             <LoginContainer>
                 <LoginForm onSubmit={this.handleLoginSubmit}>

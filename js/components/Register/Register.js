@@ -9,63 +9,60 @@ import {
     DataInput,
     RegistrationLinks,
     LoginLink,
-    RegisterButton
+    RegisterButton,
+    ErrorSpan
 } from './RegisterStyles';
 
 class Register extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            registered: false,
-            name: '',
-            email: '',
-            password: '',
-            repeatPassword: '',
-            id: ''
+            registered: false
         }
     }
     
 
     handleRegister = (e) => {
         e.preventDefault();
-        const {email, password, name} = this.state;
+        const {email, password, name} = this.props;
         this.setState({
             registered: true
         });
-        this.props.addNewUser(name, email, password);
-        this.props.history.push('/login');
-    }
-
-    handleInputChange = (e) => {
-        const input = e.target;
-        this.setState({
-            [input.name] : input.value
-        });
+        if ( this.props.handleValidateRegister()) {
+            this.props.addNewUser(name, email, password);
+            this.props.history.push('/login');
+        }
     }
     render() {
+        const {email, password, repeatPassword, name} = this.props;
         return (
             <RegistrationContainer onSubmit={this.handleRegister}>
             <RegisterForm>
                 <RegistrationHeader>Załóz konto</RegistrationHeader>
                 
                     <DataInput type='text'
-                                name='name' 
+                                name='name'
+                                value={name}
                                 placeholder='Imię'
-                                onChange={this.handleInputChange}/>
+                                onChange={this.props.handleInputChange('name')}/>
                     <DataInput type='email' 
                                 name='email' 
+                                value={email}
                                 placeholder='Email' 
-                                onChange={this.handleInputChange}/>
+                                onChange={this.props.handleInputChange('email')}/>
                     <DataInput type='password'
                                 name='password' 
+                                value={password}
                                 placeholder='Hasło' 
-                                onChange={this.handleInputChange}/>
+                                onChange={this.props.handleInputChange('password')}/>
                     <DataInput type='password' 
                                 name='repeatPassword' 
+                                value={repeatPassword}
                                 placeholder='Powtórz hasło' 
-                                onChange={this.handleInputChange}/>
+                                onChange={this.props.handleInputChange('repeatPassword')}/>
                 
-
+                    {this.props.error && <ErrorSpan>{this.props.error}</ErrorSpan>}
                 <RegistrationLinks>
                     <LoginLink to='/login'>Zaloguj się</LoginLink>
                     <RegisterButton type='submit' value='Załóz konto' />
