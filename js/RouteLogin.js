@@ -20,7 +20,10 @@ const RouteLogin = (props) => {
     return (
     <Switch>
         <Route exact path="/" render={() => <Navigation loggedIn={loggedIn}/>} />
-        <Route path='/login' render={() => <Login checkLoginData={checkLoginData} loggedIn={loggedIn}/>} />
+        <Route path='/login' render={() => <Login checkLoginData={checkLoginData} 
+                                                  loggedIn={loggedIn}
+                                                  handleInputChange={handleInputChange}
+                                            />} />
         <Route path='/register' render={() => <Register addNewUser={addNewUser}
                                                         handleValidateRegister={handleValidateRegister}
                                                         handleInputChange={handleInputChange}

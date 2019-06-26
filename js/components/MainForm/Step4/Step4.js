@@ -58,7 +58,7 @@ class Step4 extends Component {
                 
                 <DeadlineInputs>    
                 <DeadlineHeader>Termin odbioru</DeadlineHeader>
-                    <DeadlineLabel>Data <DeadlineInput  value={this.props.date}
+                    <DeadlineLabel>Data <DeadlineInput  value={date}
                                                         onChange={handleChangeDeadlineInput('date')}
                                                         />
                     

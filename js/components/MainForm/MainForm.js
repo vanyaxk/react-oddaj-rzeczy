@@ -15,9 +15,18 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
 
+const text = [
+    'Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.',
+    'Wszystkie rzeczy do oddania spakuj w 60l worki. Dokładną instukcje znajdziesz u nas na stronie.',
+    'Jeśli wiesz, komu chcesz pomóc, mozesz wpisać nazwę tej organizacji w wyszukiwarce.',
+    'Podaj adres oraz termin odbioru rzeczy które oddajesz.'
+]
+
 class MainForm extends Component {
+
+    //poprawic walidacje
     state = {
-            formStep: 4,
+            formStep: 1,
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',
@@ -27,7 +36,7 @@ class MainForm extends Component {
             homelessClicked: false,
             disabledClicked: false,
             eldersClicked: false,
-            formMessage: 'Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać',
+            formMessage: text[0],
             address: {
                 street: '',
                 city: '',
@@ -66,7 +75,7 @@ class MainForm extends Component {
         currentStep = currentStep <= 1 ? 1: currentStep - 1;
         this.setState({
             formStep: currentStep
-        })
+        });
     }
 
 
@@ -112,11 +121,11 @@ class MainForm extends Component {
                 formStep: 1,
                 error: 'You didn\'t check any checkboxes'
             });
-            console.log(this.state.error);
+            
         } else {
             this.setState({
                 formStep: 2,
-                formMessage: 'Wszystkie rzeczy do oddania spakuj w 60l worki. Dokładną instukcje znajdziesz u nas na stronie'
+                formMessage: text[1]
             })
         }
     }
@@ -143,11 +152,11 @@ class MainForm extends Component {
                 formStep: 2,
                 error: 'You didn\'t select any option'
             });
-            console.log('it works');
+            
         } else {
             this.setState({
                 formStep: 3,
-                formMessage: 'Jeśli wiesz, komu chcesz pomóc, mozesz wpisać nazwę tej organizacji w wyszukiwarce'
+                formMessage: text[2]
             });
         }
     }
@@ -162,7 +171,8 @@ class MainForm extends Component {
             });
         } else {
             this.setState({
-                formStep: 4
+                formStep: 4,
+                formMessage: text[3]
             });
         }
     }
@@ -170,7 +180,7 @@ class MainForm extends Component {
 
     //help buttons 
 
-    handleValueChange = (key) => (e) => {
+    handleValueChange = (key) => () => {
         this.setState(prevState =>({
             [key]: !prevState[key]
         }));
@@ -187,7 +197,7 @@ class MainForm extends Component {
             }
         });
 
-        console.log(this.state.address);
+        
     }
 
     handleChangeDeadlineInput = (key) => (e) => {
@@ -197,14 +207,16 @@ class MainForm extends Component {
                     [key]: e.target.value
                 }
         });
-        console.log(this.state.deadline);
     }
 
     //form submitssion
 
     submitForm = (e) => {
+        let currentStep = this.state.formStep;
         e.preventDefault();
-        console.log('form submitted');
+        if (currentStep === 4) {
+            console.log('form submitted');
+        }
     }
     
     render() {

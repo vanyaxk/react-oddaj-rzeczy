@@ -110,7 +110,6 @@ class App extends Component {
                 throw new Error('error')
             }
             data.filter(user =>{
-                console.log(user);
                 if(user.email === email && user.password === password){
                     this.setState({
                         loggedIn: true,

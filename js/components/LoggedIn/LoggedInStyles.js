@@ -10,6 +10,7 @@ export const WelcomeSection = styled.section`
     `;
 
 export const WelcomeButton = styled.button`
+    appearance: none;
     outline: none;
     border: none;
     margin-left: 5px;

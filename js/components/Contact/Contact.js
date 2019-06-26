@@ -124,7 +124,7 @@ class Contact extends Component {
                           placeholder='Imię'/>
             <ContactInput type='email' 
                           value={this.state.email} 
-                          onChange={this.handleChangeInput('email')} 
+                          onChange={(e) => this.props.handleChangeInput('email')} 
                           onBlur={this.validateEmail} 
                           placeholder='Email'/>
         </ContactData>
