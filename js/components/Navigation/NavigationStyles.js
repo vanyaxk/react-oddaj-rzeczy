@@ -79,6 +79,6 @@ export const CTAButton = styled(NavLink)`
     width: 175px;
     text-transform: uppercase;
     display: flex;
-    jsutify-content: center;
+    justify-content: center;
     align-items: center;
 `;

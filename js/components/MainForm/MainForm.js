@@ -14,6 +14,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Step4 from './Step4';
+import Step5 from './Step5';
 
 const text = [
     'Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy wiedzieć komu najlepiej je przekazać.',
@@ -26,7 +27,7 @@ class MainForm extends Component {
 
     //poprawic walidacje
     state = {
-            formStep: 1,
+            formStep: 5,
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',
@@ -36,6 +37,7 @@ class MainForm extends Component {
             homelessClicked: false,
             disabledClicked: false,
             eldersClicked: false,
+            findInput: '',
             formMessage: text[0],
             address: {
                 street: '',
@@ -177,6 +179,18 @@ class MainForm extends Component {
         }
     }
 
+    //search orgs 
+
+    handleFindInput = (e) => {
+        const input = e.target.value;
+
+        this.setState({
+            findInput: input
+        });
+
+        console.log(this.state.findInput);
+    }
+
 
     //help buttons 
 
@@ -264,6 +278,9 @@ class MainForm extends Component {
                            date={date}
                            hour={hour}
                            message={message}
+                    />
+                    <Step5 formStep={formStep}
+                           handleFindInput={this.handleFindInput} 
                     />
                     <MainFormButtons>
                         {this.prevButton}

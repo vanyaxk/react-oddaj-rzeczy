@@ -23,68 +23,61 @@
             "name": "Fundacja 'Dbam o zdrowie'",
             "mission": "Pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubranie, jedzenie, sprzet, AGD"
-        }
-    ],
+        },
 
-    "organisations": [
         {
-            "id": 1,
+            "id": 5,
             "name": "Polska Akcja Humanitarna",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
-            "id": 2,
+            "id": 6,
             "name": "Fundacja im. Stefana Batorego",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
-            "id": 3,
+            "id": 7,
             "name": "Fundacja MSP Komandor",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
-
         {
-            "id": 4,
-            "name": "Fundacja 'Arka'",
-            "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
-            "needs": "ubrania, sprzet, AGD, pieniądze"
-        }
-    ],
-
-    "local-organisations": [
-        {
-            "id": 1,
+            "id": 8,
             "name": "Fundacja 'Arka'",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
-            "id": 2,
+            "id": 9,
             "name": "Fundacja 'Arka'",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
-            "id": 3,
+            "id": 10,
+            "name": "Fundacja 'Arka'",
+            "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
+            "needs": "ubrania, sprzet, AGD, pieniądze"
+        },
+
+        {
+            "id": 11,
             "name": "Fundacja 'Bez domu'",
             "mission": "Pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubranie, jedzenie, sprzet, AGD"
         },
 
         {
-            "id": 4,
+            "id": 12,
             "name": "Fundacja 'Super'",
             "mission": "Pomoc wszystkim!",
             "needs": "Wszystko!"
         }
     ]
-
-
 }
