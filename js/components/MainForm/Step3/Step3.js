@@ -60,7 +60,7 @@ class Step3 extends Component {
 
                 <HelpSection>
                     Wpisz nazwę konkretnej organizacji (opcjonalne)
-                    <InputOrg />
+                    <InputOrg onChange={this.props.handleFindInput}/>
                 </HelpSection>
             </FormStepThree>
         )

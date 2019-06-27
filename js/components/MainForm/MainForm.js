@@ -27,7 +27,7 @@ class MainForm extends Component {
 
     //poprawic walidacje
     state = {
-            formStep: 5,
+            formStep: 3,
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',
@@ -68,6 +68,11 @@ class MainForm extends Component {
         if (currentStep === 3) {
             this.handleValidateLocal();
         }
+        if (currentStep === 4) {
+            this.setState({
+                formStep: 5
+            })
+        }
     }
 
 
@@ -96,9 +101,9 @@ class MainForm extends Component {
     get nextButton() {
         let currentStep = this.state.formStep;
 
-        if (currentStep <= 3) {
+        if (currentStep <= 4) {
             return <NextButton onClick={this.next}>Dalej</NextButton>
-        }   else if (currentStep === 4) {
+        }   else if (currentStep === 5) {
             return <SubmitButton></SubmitButton>
         }
 
@@ -187,8 +192,6 @@ class MainForm extends Component {
         this.setState({
             findInput: input
         });
-
-        console.log(this.state.findInput);
     }
 
 
@@ -228,7 +231,7 @@ class MainForm extends Component {
     submitForm = (e) => {
         let currentStep = this.state.formStep;
         e.preventDefault();
-        if (currentStep === 4) {
+        if (currentStep === 5) {
             console.log('form submitted');
         }
     }
@@ -266,6 +269,7 @@ class MainForm extends Component {
                             homelessClicked={this.state.homelessClicked}
                             disabledClicked={this.state.disabledClicked}
                             eldersClicked={this.state.eldersClicked}
+                            handleFindInput={this.handleFindInput}
                             />
                     <Step4 formStep={formStep}
                            error={error}
@@ -281,6 +285,7 @@ class MainForm extends Component {
                     />
                     <Step5 formStep={formStep}
                            handleFindInput={this.handleFindInput} 
+                           findInput={this.state.findInput}
                     />
                     <MainFormButtons>
                         {this.prevButton}
