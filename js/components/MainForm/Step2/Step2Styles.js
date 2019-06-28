@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 
 export const FormStepTwo = styled.section`
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 `;
 
 export const Label = styled.label`
     display: flex;
+    flex-direction: column;
 `;
 
 export const Select = styled.select`

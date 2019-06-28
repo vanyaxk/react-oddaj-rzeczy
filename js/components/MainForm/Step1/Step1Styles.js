@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import React from 'react';
 
 export const FormStepOne = styled.section`
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    width: 70%;
     height: 60%;
 `;
 

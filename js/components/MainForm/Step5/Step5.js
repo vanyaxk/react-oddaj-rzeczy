@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
 
+import {
+    FormStepFive,
+    FoundationList,
+    FoundationElement
+} from './Step5Styles';
+
 class Step5 extends Component {
     constructor(props) {
         super(props);
@@ -38,17 +44,16 @@ class Step5 extends Component {
         const { foundations } = this.state;
 
         if (this.props.formStep !== 5) return null;
-        console.log(this.props);
         return (
             
-            <section>
-                <ul>
+            <FormStepFive>
+                <FoundationList>
                     {foundations.map(element => {
-                      return <li key={element.id}>{element.name}</li>;
+                      return <FoundationElement key={element.id}>{element.name}</FoundationElement>;
                     })}
-                </ul>
+                </FoundationList>
                 
-            </section>
+            </FormStepFive>
         );
     }
 }

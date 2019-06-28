@@ -27,7 +27,7 @@ class MainForm extends Component {
 
     //poprawic walidacje
     state = {
-            formStep: 3,
+            formStep: 5,
             error: '',
             checkedItems: new Map(),
             value: '- wybierz -',

@@ -29,16 +29,17 @@ export const MainFormTag = styled.form`
     min-width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     position: relative;
 `;
 
 export const MainFormButtons = styled.section`
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    width: 500px;
     position: absolute;
     bottom: 0;
+    left: 30%;
+    transform: translate(-50%, 0);
 `;
 
 export const PrevButton = styled.button`

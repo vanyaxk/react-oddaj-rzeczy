@@ -47,21 +47,21 @@
         },
         {
             "id": 8,
-            "name": "Fundacja 'Arka'",
+            "name": "Fundacja 'Kadarka'",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
             "id": 9,
-            "name": "Fundacja 'Arka'",
+            "name": "Fundacja 'Help Children'",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },
 
         {
             "id": 10,
-            "name": "Fundacja 'Arka'",
+            "name": "Fundacja 'Pomoc'",
             "mission": "Humanitarna pomoc ludziom w trudnej sytuacji zyciowej",
             "needs": "ubrania, sprzet, AGD, pieniądze"
         },

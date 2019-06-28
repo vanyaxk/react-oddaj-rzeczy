@@ -17,7 +17,7 @@ class Step2 extends Component {
         return (
             <FormStepTwo>
             <Label>
-            Liczba 60l worków: 
+            <span>Liczba 60l worków:</span>
             <Select value={value} onChange={handleSelectChange}>
                 <Option value={value} hidden>{value}</Option>
                 <Option value="2">2</Option>
